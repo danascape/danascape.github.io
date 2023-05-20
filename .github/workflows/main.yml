@@ -4,9 +4,11 @@ jobs:
   Push:
     name: Block
     runs-on: ubuntu-latest
+    env:
+      github_secret: ${{ secrets.GH_PERSONAL_TOKEN }}
     steps:
       - uses: actions/checkout@v1
       - name: Run container
         run: |
             docker build . -t ci
-            docker run -it -e GH_PERSONAL_TOKEN=${secrets.GH_PERSONAL_TOKEN} ci
+            docker run -it -e GH_PERSONAL_TOKEN=${env.github_secret} ci
