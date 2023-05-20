@@ -1,6 +1,6 @@
-baseurl = "https://hasaber8.xyz"
+baseurl = "https://danascape.github.io"
 languageCode = "en-us"
-title = "Rohan Hasabe"
+title = "Saalim Quadri"
 theme = "hello-friend-ng"
 
 PygmentsCodeFences = true
@@ -36,7 +36,7 @@ disableHugoGeneratorInject = false
   posts = "/posts/:year/:month/:title/"
 
 [author]
-  name = "Rohan Hasabe"
+  name = "Saalim Quadri"
 
 [blackfriday]
   hrefTargetBlank = true
@@ -51,17 +51,17 @@ disableHugoGeneratorInject = false
   dateformShort   = "Jan 2"
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04"
-  utterancesRepo = "Hasaber8/Hasaber8.github.io"
+  utterancesRepo = "danascape/danascape.github.io"
   utterancesTheme = "github-dark"
   # Metadata mostly used in document's head
   # 
-  description = "Rohan Hasabe's personal website"
+  description = "Saalim's personal website"
   keywords = "portfolio, blog, programming"
   images = [""]
 
   # Home subtitle of the index page.
   #
-  homeSubtitle = "SDE Intern @ Esper.io"
+  homeSubtitle = "Linux Kernel Developer"
 
   # Set a background for the homepage
   # backgroundImage = "assets/images/background.jpg"
@@ -123,7 +123,7 @@ disableHugoGeneratorInject = false
 
   [params.logo]
     logoMark     = ">"
-    logoText     = "$ Hasaber8"
+    logoText     = "$ Danascape"
     logoHomeLink = "/"
     # Set true to remove the logo cursor entirely.
     # logoCursorDisabled = false
@@ -154,19 +154,19 @@ disableHugoGeneratorInject = false
   [[params.social]]
       name = "GitHub"
       icon = "lab la-github-square la-2x"
-      url = "https://github.com/Hasaber8"
+      url = "https://github.com/danascape"
   [[params.social]]
       name = "Linkedin"
       icon = "lab la-linkedin-in la-2x"
-      url = "https://www.linkedin.com/in/rohan-hasabe-489021193"
+      url = "https://www.linkedin.com/in/saalim-quadri/"
   [[params.social]]
       name = "Twitter"
       icon = "lab la-twitter la-2x"
-      url = "https://twitter.com/hasaber8"
+      url = "https://twitter.com/danascape"
   [[params.social]]
       name = "Telegram"
       icon = "lab la-telegram la-2x"
-      url = "https://t.me/Hasaber8"
+      url = "https://t.me/danascape"
 
 [languages]
   [languages.en]
