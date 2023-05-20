@@ -11,10 +11,10 @@ RUN curl -sLo hugo-${HUGO_VERSION}.tar.gz "https://github.com/gohugoio/hugo/rele
 
 COPY . /app
 RUN cd /app && git submodule update --init --recursive
-RUN git clone https://github.com/hasaber8/hasaber8.github.io -b master /public
+RUN git clone https://github.com/danascape/danascape.github.io -b master /public
 
-RUN git config --global user.email "rohanhasabe8@gmail.com"
-RUN git config --global user.name "Rohan Hasabe"
+RUN git config --global user.email "danascape@gmail.com"
+RUN git config --global user.name "Saalim Quadri"
 
 WORKDIR /app
 
