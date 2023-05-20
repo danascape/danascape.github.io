@@ -5,8 +5,8 @@ jobs:
     name: Block
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - name: Run container
-        uses: actions/checkout@v1
         run: |
             docker build . -t ci
             docker run -it -e GH_PERSONAL_TOKEN=${secrets.GH_PERSONAL_TOKEN} ci
