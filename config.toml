@@ -24,7 +24,7 @@ buildExpired = false
 canonifyURLs = true
 
 enableRobotsTXT = true
-enableGitInfo   = false
+enableGitInfo   = true
 enableEmoji     = true
 enableMissingTranslationPlaceholders = false
 disableRSS     = false
@@ -68,7 +68,7 @@ disableHugoGeneratorInject = false
 
   # Prefix of link to the git commit detail page. GitInfo must be enabled.
   #
-  # gitUrl = ""
+  gitUrl = "https://github.com/danascape/danascape.github.io/commit/"
 
   # Set disableReadOtherPosts to true in order to hide the links to other posts.
   #
