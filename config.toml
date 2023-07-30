@@ -181,15 +181,19 @@ disableHugoGeneratorInject = false
     identifier = "resume"
     name       = "resume"
     url        = "resume/"
+    weight     = 1
   [[menu.main]]
     identifier = "about"
     name       = "about me"
     url        = "about/"
+    weight     = 2
   [[menu.main]]
     identifier = "posts"
     name       = "posts"
     url        = "posts/"
+    weight     = 3
   [[menu.main]]
     identifier = "contact"
     name       = "contact"
     url        = "contact/"
+    weight     = 4
