@@ -1,6 +1,6 @@
 +++
 title = "Saalim's résumé"
-description = 'View PDF'
+id = "resume"
 +++
 
 <meta http-equiv="refresh" content="0; url=" />
