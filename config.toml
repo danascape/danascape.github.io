@@ -167,12 +167,20 @@ disableHugoGeneratorInject = false
       name = "Telegram"
       icon = "lab la-telegram la-2x"
       url = "https://t.me/danascape"
+  [[params.social]]
+      icon = 'la la-envelope la-2x'
+      name = 'Email'
+      url = 'mailto:danascape@gmail.com'
 
 [languages]
   [languages.en]
       subtitle  = ""
       weight    = 1
 [menu]
+  [[menu.main]]
+    identifier = "Resume"
+    name       = "Resume"
+    url        = "resume/"
   [[menu.main]]
     identifier = "about"
     name       = "about me"
