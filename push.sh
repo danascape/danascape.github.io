@@ -14,7 +14,7 @@ cd /public
 git add .
 
 # Commit changes.
-git commit -m "[ArtemisCI]: Push Built Site" -s
+git commit -m "[CI]: Push Built Site" -s
 
 # Push source and build repos.
 git push origin master
