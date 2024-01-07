@@ -105,7 +105,7 @@ disableHugoGeneratorInject = false
   #
   [params.footer]
     trademark = true
-    rss = true
+    rss = false
     copyright = true
     author = true
 
@@ -123,7 +123,7 @@ disableHugoGeneratorInject = false
 
   [params.logo]
     logoMark     = ">"
-    logoText     = "$ danascape"
+    logoText     = "$ Saalim Quadri"
     logoHomeLink = "/"
     # Set true to remove the logo cursor entirely.
     # logoCursorDisabled = false
@@ -148,27 +148,18 @@ disableHugoGeneratorInject = false
   [params.portrait]
       path     = "/images/image.jpg"
       alt      = "Portrait"
-      maxWidth = "50px"
 
   # Social icons
   [[params.social]]
       name = "GitHub"
-      icon = "lab la-github-square la-2x"
+      icon = "fa fa-github fa-2x"
       url = "https://github.com/danascape"
   [[params.social]]
       name = "Linkedin"
-      icon = "lab la-linkedin-in la-2x"
+      icon = "fa fa-linkedin fa-2x"
       url = "https://www.linkedin.com/in/saalim-quadri/"
   [[params.social]]
-      name = "Twitter"
-      icon = "lab la-twitter la-2x"
-      url = "https://twitter.com/danascape"
-  [[params.social]]
-      name = "Telegram"
-      icon = "lab la-telegram la-2x"
-      url = "https://t.me/danascape"
-  [[params.social]]
-      icon = 'la la-envelope la-2x'
+      icon = 'fa fa-envelope fa-2x'
       name = 'Email'
       url = 'mailto:danascape@gmail.com'
 
@@ -178,22 +169,22 @@ disableHugoGeneratorInject = false
       weight    = 1
 [menu]
   [[menu.main]]
-    identifier = "resume"
-    name       = "resume"
+    identifier = "Résumé"
+    name       = "Résumé"
     url        = "resume/"
     weight     = 1
   [[menu.main]]
-    identifier = "about"
-    name       = "about me"
+    identifier = "About"
+    name       = "About"
     url        = "about/"
     weight     = 2
   [[menu.main]]
-    identifier = "posts"
-    name       = "posts"
-    url        = "posts/"
+    identifier = "Blog"
+    name       = "Blog"
+    url        = "blogs/"
     weight     = 3
   [[menu.main]]
-    identifier = "contact"
-    name       = "contact"
+    identifier = "Contact"
+    name       = "Contact"
     url        = "contact/"
     weight     = 4
