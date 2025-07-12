@@ -65,7 +65,7 @@ params:
   profileMode:
     enabled: true # needs to be explicitly set
     title: Saalim Quadri
-    subtitle: "Hi, welcome to my blog."
+    subtitle: "Hi, Welcome to my blog. I am an Open Source Developer who has worked extensively with Qualcomm chipsets. I also have experience with Linux Kernel Development. I enjoy tinkering, changing, and breaking the Android operating system."
     imageUrl: "profile.png"
     imageWidth: 222
     imageHeight: 222
