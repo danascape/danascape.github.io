@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Saalim Quadri</title>
-    <link>http://localhost:45103/posts/</link>
+    <link>https://danascape.github.io/posts/</link>
     <description>Recent content in Posts on Saalim Quadri</description>
     <generator>Hugo -- 0.148.1</generator>
     <language>en</language>
     <lastBuildDate>Thu, 27 Jul 2023 00:00:00 +0530</lastBuildDate>
-    <atom:link href="http://localhost:45103/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://danascape.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LFX Mentorship for Linux Kernel Bug Fixing</title>
-      <link>http://localhost:45103/posts/1/</link>
+      <link>https://danascape.github.io/posts/1/</link>
       <pubDate>Thu, 27 Jul 2023 00:00:00 +0530</pubDate>
-      <guid>http://localhost:45103/posts/1/</guid>
+      <guid>https://danascape.github.io/posts/1/</guid>
       <description>&lt;h2 id=&#34;what-is-lfx-mentorship&#34;&gt;What is LFX mentorship?&lt;/h2&gt;
 &lt;p&gt;“The Linux Foundation Mentorship Program is designed to help developers — many of whom are first-time open source contributors — with necessary skills and resources to learn, experiment, and contribute effectively to open source communities. By participating in a mentorship program, mentees have the opportunity to learn from experienced open source contributors as a segue to get internship and job opportunities upon graduation.”
 Please have a look at the Mentorship guide to learn how to participate in LFX Mentorship programs: lfx.linuxfoundation.org/mentorship/guide&lt;/p&gt;</description>

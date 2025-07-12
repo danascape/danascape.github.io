@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:45103/posts/1/</loc>
+    <loc>https://danascape.github.io/posts/1/</loc>
     <lastmod>2023-07-27T00:00:00+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:45103/posts/</loc>
+    <loc>https://danascape.github.io/posts/</loc>
     <lastmod>2023-07-27T00:00:00+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:45103/</loc>
+    <loc>https://danascape.github.io/</loc>
     <lastmod>2023-07-27T00:00:00+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:45103/categories/</loc>
+    <loc>https://danascape.github.io/categories/</loc>
   </url><url>
-    <loc>http://localhost:45103/search/</loc>
+    <loc>https://danascape.github.io/search/</loc>
   </url><url>
-    <loc>http://localhost:45103/tags/</loc>
+    <loc>https://danascape.github.io/tags/</loc>
   </url>
 </urlset>
