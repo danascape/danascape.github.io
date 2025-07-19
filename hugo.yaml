@@ -8,6 +8,13 @@ outputs:
     - rss
     - json
 
+services:
+  googleAnalytics:
+    id: G-WDDV94BTDD
+    SiteVerificationTag: "G-WDDV94BTDD"
+  disqus:
+    shortname: squadri
+
 theme: PaperMod
 
 enableRobotsTXT: true
@@ -41,7 +48,7 @@ params:
   UseHugoToc: true
   disableSpecial1stPost: false
   disableScrollToTop: false
-  comments: false
+  comments: true
   hidemeta: false
   hideSummary: false
   showtoc: false
@@ -71,8 +78,8 @@ params:
     imageHeight: 222
     #imageTitle: my image
     buttons:
-      # - name: Posts
-      #   url: posts
+      - name: Posts
+        url: posts
       - name: Repositories
         url: "https://github.com/danascape"
       # - name: Tags
