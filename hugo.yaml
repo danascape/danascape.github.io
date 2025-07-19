@@ -137,6 +137,9 @@ menu:
   #     url: https://example.org
   #     weight: 30
   main:
+    - name: Archive
+      url: archives
+      weight: 5
     - name: Posts
       url: posts
       weight: 5
