@@ -6,16 +6,84 @@
     <description>Recent content on Saalim Quadri</description>
     <generator>Hugo -- 0.148.1</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 27 Jul 2023 00:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 16 Jul 2025 00:00:00 +0530</lastBuildDate>
     <atom:link href="https://danascape.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Google Summer of Code: Midterm Evaluation</title>
+      <link>https://danascape.github.io/posts/7/</link>
+      <pubDate>Wed, 16 Jul 2025 00:00:00 +0530</pubDate>
+      <guid>https://danascape.github.io/posts/7/</guid>
+      <description>&lt;p&gt;Hi folks,&lt;/p&gt;
+&lt;p&gt;Today marks my 10th Week of GSoC project&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Using AOSP Kernel Build</title>
+      <link>https://danascape.github.io/posts/6/</link>
+      <pubDate>Wed, 14 Aug 2024 00:00:00 +0530</pubDate>
+      <guid>https://danascape.github.io/posts/6/</guid>
+      <description>&lt;p&gt;In my previous blog, we talked about how to cross-compile Android Kernel, but there is another official way that ODMs use to compile their kernel sources, via AOSP Kernel Build.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://danascape.github.io/posts/6/img/akb_intro.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This blog covers 2 aspects:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Compile using Legacy AOSP Kernel Build&lt;/li&gt;
+&lt;li&gt;Add support for bazel Kernel Build&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Bazel&lt;/strong&gt; is an open-source build and test tool from Google. It supports a wide range of programming languages and platforms, and it&amp;rsquo;s known for its speed and ability to handle large codebases efficiently. Bazel uses a build system that allows for incremental builds, parallel execution, and sophisticated dependency analysis, making it a popular choice for complex projects like AOSP.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cross-Compiling Android Linux Kernel</title>
+      <link>https://danascape.github.io/posts/5/</link>
+      <pubDate>Wed, 24 Jul 2024 00:00:00 +0530</pubDate>
+      <guid>https://danascape.github.io/posts/5/</guid>
+      <description>&lt;p&gt;When you use your Android device, you&amp;rsquo;re interacting with a complex system that relies heavily on the Linux kernel at its core. But what exactly is the Android Linux kernel, and how does it work?&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://danascape.github.io/posts/5/img/cc_lk_intro.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;what-is-linux-kernel&#34;&gt;What is Linux Kernel?&lt;/h2&gt;
+&lt;p&gt;The Linux kernel is the core component of the Linux operating system, responsible for managing hardware resources (such as the CPU, memory, and devices), providing essential services to software applications, and ensuring secure and efficient operation of the entire system.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>LFX Mentorship for Linux Kernel Bug Fixing</title>
-      <link>https://danascape.github.io/posts/1/</link>
+      <link>https://danascape.github.io/posts/4/</link>
       <pubDate>Thu, 27 Jul 2023 00:00:00 +0530</pubDate>
+      <guid>https://danascape.github.io/posts/4/</guid>
+      <description>&lt;p&gt;Learn more about the Linux Foundation Mentorship programme, and hear from someone who went through the process.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://danascape.github.io/posts/4/img/lfx_logo.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;what-is-lfx-mentorship&#34;&gt;What is LFX mentorship?&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;The Linux Foundation Mentorship Program is designed to help developers — many of whom are first-time open source contributors — with necessary skills and resources to learn, experiment, and contribute effectively to open source communities. By participating in a mentorship program, mentees have the opportunity to learn from experienced open source contributors as a segue to get internship and job opportunities upon graduation.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to AOSP</title>
+      <link>https://danascape.github.io/posts/3/</link>
+      <pubDate>Sun, 06 Nov 2022 00:00:00 +0530</pubDate>
+      <guid>https://danascape.github.io/posts/3/</guid>
+      <description>&lt;p&gt;The Android Open Source Project is an open source development project managed by Google, and anyone is welcome to evaluate and add code and fixes to the source code.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Photo by Marek Piwnicki / Unsplash&#34; loading=&#34;lazy&#34; src=&#34;https://danascape.github.io/posts/3/img/intro_title.jpeg&#34; title=&#34;Photo by Marek Piwnicki / Unsplash&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;android-system-architecture&#34;&gt;Android System Architecture&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s first talk about the layers of an Android device&amp;rsquo;s architecture before delving into the build system and the source code.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Application Layer&lt;/strong&gt;:
+This layer includes built-in/system applications for direct end-user interaction.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Android Device Tree Bringup</title>
+      <link>https://danascape.github.io/posts/2/</link>
+      <pubDate>Mon, 04 Oct 2021 00:00:00 +0530</pubDate>
+      <guid>https://danascape.github.io/posts/2/</guid>
+      <description>&lt;p&gt;Learn how to bring-up a device tree for your device so you can get started with building your favourite custom ROM!&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://danascape.github.io/posts/2/img/devicetree_bringup_title.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Some of you guys might be wondering how people create your favorite custom ROMs like LineageOS, PixelExperience, HavocOS, and so on. I&amp;rsquo;m here to guide you about the basics of a device tree and how to do a scratch bring-up of your own.&lt;/p&gt;
+&lt;p&gt;This article is a follow-up to my earlier article, &lt;a href=&#34;https://blog.realogs.in/getting-started-with-aosp/&#34;&gt;Introduction to AOSP&lt;/a&gt; in which we discussed the fundamentals of and how to join the Android Open Source Project.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Writing an Overlayed DTS</title>
+      <link>https://danascape.github.io/posts/1/</link>
+      <pubDate>Tue, 21 Sep 2021 00:00:00 +0530</pubDate>
       <guid>https://danascape.github.io/posts/1/</guid>
-      <description>&lt;h2 id=&#34;what-is-lfx-mentorship&#34;&gt;What is LFX mentorship?&lt;/h2&gt;
-&lt;p&gt;“The Linux Foundation Mentorship Program is designed to help developers — many of whom are first-time open source contributors — with necessary skills and resources to learn, experiment, and contribute effectively to open source communities. By participating in a mentorship program, mentees have the opportunity to learn from experienced open source contributors as a segue to get internship and job opportunities upon graduation.”
-Please have a look at the Mentorship guide to learn how to participate in LFX Mentorship programs: lfx.linuxfoundation.org/mentorship/guide&lt;/p&gt;</description>
+      <description>&lt;p&gt;Overlayed device trees are written in order to avoid changing the base device tree structures already present in the kernel source, and just get them overridden during compilation. Learn how to create them!&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://danascape.github.io/posts/1/img/overlayed_title.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;basics&#34;&gt;Basics&lt;/h2&gt;
+&lt;p&gt;A device tree is a data structure for describing hardware.&lt;/p&gt;
+&lt;p&gt;Overlayed device trees are written in order to avoid changing the base device tree structures already present in the kernel source, and just get them overridden during compilation.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
