@@ -6,15 +6,15 @@
     <description>Recent content on Saalim Quadri</description>
     <generator>Hugo -- 0.148.1</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 16 Jul 2025 00:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 20 Jul 2025 00:00:00 +0530</lastBuildDate>
     <atom:link href="https://danascape.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Google Summer of Code: Midterm Evaluation</title>
+      <title>Google Summer of Code: Linux Foundation</title>
       <link>https://danascape.github.io/posts/7/</link>
-      <pubDate>Wed, 16 Jul 2025 00:00:00 +0530</pubDate>
+      <pubDate>Sun, 20 Jul 2025 00:00:00 +0530</pubDate>
       <guid>https://danascape.github.io/posts/7/</guid>
-      <description>&lt;p&gt;Hi folks,&lt;/p&gt;
-&lt;p&gt;Today marks my 10th Week of GSoC project&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;what-is-google-summer-of-code&#34;&gt;What Is Google Summer of Code?&lt;/h2&gt;
+&lt;p&gt;Google Summer of Code (GSoC) is an annual program sponsored by Google that brings student developers into open source software development. Since its inception in 2005, GSoC has paired thousands of students with mentors from participating organizations—like the Linux Foundation—to work on real-world coding projects over a three-month summer period. Students gain exposure to open source communities, develop their skills, and receive stipends upon successful completion.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Using AOSP Kernel Build</title>
