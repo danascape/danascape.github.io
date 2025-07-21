@@ -9,12 +9,13 @@
     <lastBuildDate>Sun, 20 Jul 2025 00:00:00 +0530</lastBuildDate>
     <atom:link href="https://danascape.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Google Summer of Code: Linux Foundation</title>
+      <title>Getting Started with AOSP - Part 1</title>
       <link>https://danascape.github.io/posts/7/</link>
       <pubDate>Sun, 20 Jul 2025 00:00:00 +0530</pubDate>
       <guid>https://danascape.github.io/posts/7/</guid>
-      <description>&lt;h2 id=&#34;what-is-google-summer-of-code&#34;&gt;What Is Google Summer of Code?&lt;/h2&gt;
-&lt;p&gt;Google Summer of Code (GSoC) is an annual program sponsored by Google that brings student developers into open source software development. Since its inception in 2005, GSoC has paired thousands of students with mentors from participating organizations—like the Linux Foundation—to work on real-world coding projects over a three-month summer period. Students gain exposure to open source communities, develop their skills, and receive stipends upon successful completion.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Today marks six years since I compiled my very first Android source build — it was Android 7.0 Nougat. Ever since then, I’ve been deeply involved in Android platform development, and there’s one question that keeps coming back to me, asked by thousands of people:&lt;/p&gt;
+&lt;h3 id=&#34;what-does-it-actually-take-to-get-started-with-aosp&#34;&gt;“What does it actually take to get started with AOSP?”&lt;/h3&gt;
+&lt;p&gt;If you&amp;rsquo;re new to the Android Open Source Project, the sheer scale of it can feel overwhelming. I still get the occasional nightmare navigating through &lt;code&gt;frameworks/base&lt;/code&gt;, HAL layers, and random blueprint files scattered across the tree.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Using AOSP Kernel Build</title>
