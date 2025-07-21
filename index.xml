@@ -6,12 +6,12 @@
     <description>Recent content on Saalim Quadri</description>
     <generator>Hugo -- 0.148.1</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 20 Jul 2025 00:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 22 Jul 2025 00:00:00 +0530</lastBuildDate>
     <atom:link href="https://danascape.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Getting Started with AOSP - Part 1</title>
       <link>https://danascape.github.io/posts/7/</link>
-      <pubDate>Sun, 20 Jul 2025 00:00:00 +0530</pubDate>
+      <pubDate>Tue, 22 Jul 2025 00:00:00 +0530</pubDate>
       <guid>https://danascape.github.io/posts/7/</guid>
       <description>&lt;p&gt;Today marks six years since I compiled my very first Android source build — it was Android 7.0 Nougat. Ever since then, I’ve been deeply involved in Android platform development, and there’s one question that keeps coming back to me, asked by thousands of people:&lt;/p&gt;
 &lt;h3 id=&#34;what-does-it-actually-take-to-get-started-with-aosp&#34;&gt;“What does it actually take to get started with AOSP?”&lt;/h3&gt;
