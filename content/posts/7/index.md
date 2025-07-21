@@ -4,6 +4,8 @@ date: 2025-07-22 00:00:00 +0530
 weight: 1
 ---
 
+![](img/android.png)
+
 Today marks six years since I compiled my very first Android source build — it was Android 7.0 Nougat. Ever since then, I’ve been deeply involved in Android platform development, and there’s one question that keeps coming back to me, asked by thousands of people:
 
 ### “What does it actually take to get started with AOSP?”
