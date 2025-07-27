@@ -56,6 +56,9 @@ Once you're fluent with AOSP internals, here's what you can build, experiment wi
 ## Careers
 AOSP experience opens doors in deep system-level engineering. Roles include:
 
+* **AOSP Engineer**
+    * Work on full AOSP Stack, from frameworks to applications, and core libraries, maintaining source, updating patches, etc.
+
 * **Android Framework Developer**
     * Modify and extend platform behavior, build custom APIs, tweak system services.
 
