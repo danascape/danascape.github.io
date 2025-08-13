@@ -1,46 +1,90 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://danascape.github.io/posts/gsoc-1/</loc>
-    <lastmod>2025-08-08T00:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://danascape.github.io/posts/8/</loc>
-    <lastmod>2025-07-22T00:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://danascape.github.io/posts/7/</loc>
-    <lastmod>2025-07-22T00:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://danascape.github.io/posts/</loc>
-    <lastmod>2025-08-08T00:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://danascape.github.io/</loc>
-    <lastmod>2025-08-08T00:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://danascape.github.io/posts/6/</loc>
-    <lastmod>2024-08-14T00:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://danascape.github.io/posts/5/</loc>
-    <lastmod>2024-07-24T00:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://danascape.github.io/posts/4/</loc>
-    <lastmod>2023-07-27T00:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://danascape.github.io/posts/3/</loc>
-    <lastmod>2022-11-06T00:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://danascape.github.io/posts/2/</loc>
-    <lastmod>2021-10-04T00:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://danascape.github.io/posts/1/</loc>
-    <lastmod>2021-09-21T00:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://danascape.github.io/archives/</loc>
-  </url><url>
-    <loc>https://danascape.github.io/categories/</loc>
-  </url><url>
-    <loc>https://danascape.github.io/search/</loc>
-  </url><url>
-    <loc>https://danascape.github.io/tags/</loc>
-  </url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://danascape.github.io/posts/Writing-an-Overlayed-DTS/</loc>
+<lastmod>2021-09-21T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>https://danascape.github.io/posts/Android-Device-Tree-Bringup/</loc>
+<lastmod>2021-10-04T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>https://danascape.github.io/posts/Introduction-to-AOSP/</loc>
+<lastmod>2022-11-06T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>https://danascape.github.io/posts/LFX-Mentorship-for-Linux-Kernel-Bug-Fixing/</loc>
+<lastmod>2023-07-27T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>https://danascape.github.io/posts/Cross-Compiling-Android-Linux-Kernel/</loc>
+<lastmod>2024-07-24T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>https://danascape.github.io/posts/Using-AOSP-Kernel-Build/</loc>
+<lastmod>2024-08-14T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>https://danascape.github.io/posts/Getting-Started-with-AOSP-Part-1/</loc>
+<lastmod>2025-07-15T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>https://danascape.github.io/posts/Features-and-Future-Scope-in-AOSP-Part-2/</loc>
+<lastmod>2025-07-22T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>https://danascape.github.io/categories/</loc>
+<lastmod>2025-08-13T19:07:43+05:30</lastmod>
+</url>
+<url>
+<loc>https://danascape.github.io/tags/</loc>
+<lastmod>2025-08-13T19:07:43+05:30</lastmod>
+</url>
+<url>
+<loc>https://danascape.github.io/archives/</loc>
+<lastmod>2025-08-13T19:07:43+05:30</lastmod>
+</url>
+<url>
+<loc>https://danascape.github.io/about/</loc>
+<lastmod>2025-08-13T19:07:43+05:30</lastmod>
+</url>
+<url>
+<loc>https://danascape.github.io/</loc>
+</url>
+<url>
+<loc>https://danascape.github.io/tags/linux/</loc>
+</url>
+<url>
+<loc>https://danascape.github.io/tags/kernel/</loc>
+</url>
+<url>
+<loc>https://danascape.github.io/tags/linux-kernel/</loc>
+</url>
+<url>
+<loc>https://danascape.github.io/tags/dts/</loc>
+</url>
+<url>
+<loc>https://danascape.github.io/tags/aosp/</loc>
+</url>
+<url>
+<loc>https://danascape.github.io/tags/android/</loc>
+</url>
+<url>
+<loc>https://danascape.github.io/tags/lfx/</loc>
+</url>
+<url>
+<loc>https://danascape.github.io/tags/bazel/</loc>
+</url>
+<url>
+<loc>https://danascape.github.io/tags/make/</loc>
+</url>
+<url>
+<loc>https://danascape.github.io/tags/os/</loc>
+</url>
+<url>
+<loc>https://danascape.github.io/categories/linux-kernel/</loc>
+</url>
+<url>
+<loc>https://danascape.github.io/categories/aosp/</loc>
+</url>
 </urlset>
