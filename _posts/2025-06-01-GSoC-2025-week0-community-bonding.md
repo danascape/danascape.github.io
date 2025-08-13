@@ -36,7 +36,7 @@ For me, I asked for a 2 day face-to-face call with my mentors, which they agreed
 * Asked a few questions about builds, ROS, etc.
 
 ## Project Scope
-I got to understand that after getting selected for GSoC, the proposal you wrote can change whole lot, because during my community bonding period, we went through a lot of things before eventually reaching a base conclusion to integrate between the 2 technologies, there were a lot of debates, but eventually I got myself to a starting point.
+One important lesson during the community bonding period was that, after being selected for GSoC, the proposal you submitted can evolve significantly. During this period, we explored many aspects of the project before reaching a solid starting point for integrating the two technologies. There were numerous debates, but in the end, we found a common ground.
 
 The community bonding period has been invaluable for understanding not just the technical challenges, but the collaborative processes that make open-source projects successful. I'm excited to start the hands-on development work!
 
