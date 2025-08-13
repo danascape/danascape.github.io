@@ -1,1 +1,27 @@
-{ "name": "squadri", "short_name": "squadri", "description": "A minimal, responsive and feature-rich Jekyll theme for technical writing.", "icons": [ { "src": "/assets/img/favicons/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" }, { "src": "/assets/img/favicons/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }], "start_url": "/index.html", "theme_color": "#2a1e6b", "background_color": "#ffffff", "display": "fullscreen" }
+{
+  "name": "Saalim Quadri - Blog",
+  "short_name": "squadri",
+  "description": "Saalim Quadri's blog - Open Source Developer specializing in Qualcomm chipsets and Linux Kernel Development",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2e2e33",
+  "orientation": "portrait-primary",
+  "categories": ["education", "technology", "development"],
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/assets/img/favicons/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/assets/img/favicons/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}
