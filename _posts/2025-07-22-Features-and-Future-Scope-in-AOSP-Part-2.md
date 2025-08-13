@@ -2,7 +2,7 @@
 layout: post
 title: "Features and Future Scope in AOSP - Part 2"
 date: 2025-07-22 00:00:00 +0530
-categories: [AOSP]
+categories: [AOSP Tutorials]
 tags: [AOSP, Android]
 author: danascape
 toc: true

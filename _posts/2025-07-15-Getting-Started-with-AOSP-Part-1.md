@@ -2,7 +2,7 @@
 layout: post
 title: "Getting Started with AOSP - Part 1"
 date: 2025-07-15 00:00:00 +0530
-categories: [AOSP]
+categories: [AOSP Tutorials]
 tags: [AOSP, Android, OS]
 author: danascape
 toc: true
