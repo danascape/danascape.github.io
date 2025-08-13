@@ -4,10 +4,20 @@
     <title>Posts on Saalim Quadri</title>
     <link>https://danascape.github.io/posts/</link>
     <description>Recent content in Posts on Saalim Quadri</description>
-    <generator>Hugo -- 0.148.1</generator>
+    <generator>Hugo -- 0.148.2</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 22 Jul 2025 00:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 08 Aug 2025 00:00:00 +0530</lastBuildDate>
     <atom:link href="https://danascape.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GSoC 2025 - Automotive Grade Linux (AGL) &#43; ROS Integration</title>
+      <link>https://danascape.github.io/posts/gsoc-1/</link>
+      <pubDate>Fri, 08 Aug 2025 00:00:00 +0530</pubDate>
+      <guid>https://danascape.github.io/posts/gsoc-1/</guid>
+      <description>&lt;h2 id=&#34;project-background&#34;&gt;Project Background&lt;/h2&gt;
+&lt;p&gt;This summer, I&amp;rsquo;m working on Google Summer of Code 2025 with the Linux Foundation, focusing on integrating Robot Operating System (ROS) with Automotive Grade Linux (AGL) through the meta-ros layer.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-automotive-grade-linux-agl&#34;&gt;What is Automotive Grade Linux (AGL)?&lt;/h2&gt;
+&lt;p&gt;Automotive Grade Linux is an open-source collaborative project that brings together automakers, suppliers, and technology companies to develop a unified software platform for connected cars. Think of it as Android for cars, but built from the ground up for automotive requirements.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Features and Future Scope in AOSP - Part 2</title>
       <link>https://danascape.github.io/posts/8/</link>
