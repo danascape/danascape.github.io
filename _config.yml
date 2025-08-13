@@ -134,6 +134,9 @@ assets:
     # only works if `assets.self_host.enabled` is 'true'
     env: # [development | production]
 
+# Force cache invalidation with timestamp
+cache_bust: true
+
 pwa:
   enabled: true # The option for PWA feature (installable)
   cache:
