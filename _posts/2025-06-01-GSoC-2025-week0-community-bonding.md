@@ -44,12 +44,18 @@ The community bonding period has been invaluable for understanding not just the 
 
 **Week 0 Summary**: Foundation laid, community connections established, technical environment prepared.
 
-**Next**: [Week 1: Hardware Setup and Initial Build Environment][week-1]  
+## Get Involved
+Stay tuned for the detailed technical deep-dives in the upcoming blog posts. I am planning to include examples, code, etc, such that anyone can follow along with it.
+
+Have questions about automotive software development or want to collaborate on open-source automotive projects? Reach out to me on my [email][email]
+
+**Next**: [Week 1,2: Hardware Setup and Initial Build Environment][week-1]  
 **Journey**: [GSoC 2025 Journey][series-journey] 
 
+[email]: mailto:saalim.priv@gmail.com
 [jan-email]: mailto:jsmoeller@linuxfoundation.org
 [walt-email]: mailto:wminer@linuxfoundation.org
 [rob-email]: mailto:rob.woolley@windriver.com
 [agl-calendar]: https://lists.automotivelinux.org/g/agl-dev-community/calendar
-[week-1]: /posts/GSoC-2025-week1/
+[week-1]: /posts/GSoC-2025-week1-2/
 [series-journey]: /posts/GSoC-2025-Journey/
