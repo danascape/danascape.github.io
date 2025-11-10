@@ -13,6 +13,7 @@ philosophy: "What I cannot create, I do not understand"
 ```
 
 ## 🌐 Connect
+- Youtube: [@danascape](https://www.youtube.com/@danascape)
 - Twitter: [@danascape](https://x.com/danascape)
 - GitHub: [danascape](https://github.com/danascape)
 - LinkedIn: [Saalim Quadri](https://www.linkedin.com/in/saalim-quadri/)
