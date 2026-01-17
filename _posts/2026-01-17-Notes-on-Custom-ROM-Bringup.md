@@ -244,7 +244,7 @@ adb shell service list
 adb shell dumpsys
 adb shell dumpsys activity
 adb shell dumpsys package
-adb shell cmd package list packages
+adb shell pm list packages
 ```
 
 ## Closing notes
