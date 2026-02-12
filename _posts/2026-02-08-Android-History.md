@@ -4,7 +4,7 @@ title: "Android Release History"
 date: 2026-02-08 00:00:00 +0530
 categories: [AOSP]
 tags: [Android, AOSP, Frameworks, Vendor]
-description: ""
+description: "How android came to what it is now"
 author: danascape
 toc: true
 ---
