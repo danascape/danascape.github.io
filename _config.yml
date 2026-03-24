@@ -170,6 +170,10 @@ collections:
   tabs:
     output: true
     sort_by: order
+  devices:
+    output: true
+  kernel:
+    output: true
 
 defaults:
   - scope:
@@ -192,6 +196,22 @@ defaults:
     values:
       layout: page
       permalink: /:title/
+  - scope:
+      path: ""
+      type: devices
+    values:
+      layout: post
+      comments: false
+      toc: true
+      permalink: /devices/:title/
+  - scope:
+      path: ""
+      type: kernel
+    values:
+      layout: post
+      comments: false
+      toc: true
+      permalink: /kernel/:title/
 
 sass:
   style: compressed
