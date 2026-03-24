@@ -139,6 +139,32 @@ Other changes will also involve the same process, and you might need to delete n
 
 Here's an [example][final-example].
 
+<hr style="margin-top: 40px; margin-bottom: 20px;">
+
+<pre style="
+font-family: monospace;
+background: #0d1117;
+color: #c9d1d9;
+padding: 16px;
+border-radius: 8px;
+overflow-x: auto;
+line-height: 1.6;
+">
+
+Built, broken, and dumped by Saalim
+
+Find me on:
+GitHub   → <a href="https://github.com/danascape" style="color:#58a6ff;">danascape</a>
+LinkedIn → <a href="https://www.linkedin.com/in/saalim-quadri/" style="color:#58a6ff;">saalim-quadri</a>
+YouTube  → <a href="https://youtube.com/@danascape" style="color:#58a6ff;">@danascape</a>
+
+Got thoughts, feedback, or just want to drop a hi?
+→ <a href="mailto:saalim.priv@gmail.com" style="color:#58a6ff;">saalim.priv@gmail.com</a>
+
+</pre>
+
+<hr style="margin-top: 20px;">
+
 [x01ad-stock-dts]: https://github.com/stormbreaker-project/linux-asus-x01ad/commit/d4fd8d9a664672056e4b68a31da298a4d4bc79ac
 [x01ad-overlayed-dts]: https://github.com/stormbreaker-project/linux-asus-x01ad/commit/85b3cb884acf30831a4185327a19a2c4268e457a
 [x01ad-stock-changes]: https://github.com/stormbreaker-project/linux-asus-x01ad/tree/423c09527a97e55cca9a9ccfca247b1b179e3ebc

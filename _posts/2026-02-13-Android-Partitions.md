@@ -169,3 +169,29 @@ Modern Android devices use dynamic partitions, A/B slots, and GKI separation, so
         - COW (Copy-on-write)
     - Eliminates need for full duplicate partitions
     - Reduces storage overhead compared to classic A/B
+
+<hr style="margin-top: 40px; margin-bottom: 20px;">
+
+<pre style="
+font-family: monospace;
+background: #0d1117;
+color: #c9d1d9;
+padding: 16px;
+border-radius: 8px;
+overflow-x: auto;
+line-height: 1.6;
+">
+
+Built, broken, and dumped by Saalim
+
+Find me on:
+GitHub   → <a href="https://github.com/danascape" style="color:#58a6ff;">danascape</a>
+LinkedIn → <a href="https://www.linkedin.com/in/saalim-quadri/" style="color:#58a6ff;">saalim-quadri</a>
+YouTube  → <a href="https://youtube.com/@danascape" style="color:#58a6ff;">@danascape</a>
+
+Got thoughts, feedback, or just want to drop a hi?
+→ <a href="mailto:saalim.priv@gmail.com" style="color:#58a6ff;">saalim.priv@gmail.com</a>
+
+</pre>
+
+<hr style="margin-top: 20px;">
