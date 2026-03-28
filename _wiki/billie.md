@@ -63,8 +63,11 @@ Before you begin:
 
 1. Boot into your **recovery**.
 2. Go to **Format Data → Confirm**.
-3. Apply Update and Sideload the **ROM** zip.
-4. Reboot back into **Recovery** (optional for Gapps).
+3. Select **Apply Update → Sideload the ROM zip**:
+   ```bash
+   adb sideload lineageos-*.zip
+   ```
+4. Reboot back into **Recovery** if flashing GApps, then sideload the GApps package (optional).
 5. Reboot to **System**.
 
 ---
@@ -82,7 +85,7 @@ Before you begin:
 ### Method 2: Recovery Flash
 
 1. Reboot to **Recovery**.
-2. Select **Apply Update → Sideload Zip file**.
+2. Select **Apply Update → Sideload the ROM zip**.
 3. Reboot to **System**.
 
 > **Note:** For vanilla builds, **GApps must be reflashed after every update**.
