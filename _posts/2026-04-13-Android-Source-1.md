@@ -73,6 +73,8 @@ It contains:
 
 If you're debugging behavior like activity lifecycle or system services, you're going to live here.
 
+We will talk about this more in-detail in another part.
+
 ### **bionic/**
 
 Android’s custom C library (instead of glibc).
