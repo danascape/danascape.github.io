@@ -9,12 +9,6 @@ author: danascape
 toc: true
 ---
 
-## Recap
-
-In Part 1 I got **billie** (the OnePlus Nord N10 5G, `SM6350`) booting a mainline kernel to a framebuffer console with SSH over USB. At the end of that post there was a long list of things that did not work. Right at the top of it: **touchscreen**.
-
-I wrote this as the post I wish I had when I started. It is long on purpose. It is both a from-scratch guide to **how a touchscreen driver actually works**, and an honest log of everything I got wrong. If you have never written a driver, start at the top and do not skip. If future-me has forgotten the Linux kernel entirely and is staring at another dead touchscreen, this should be enough to get going again from zero. billie's **Himax HX83112F** is just the specimen on the table.
-
 ## Who this is for, and what you need first
 
 You need to be comfortable *reading* C. Not writing clever C, just following pointers, structs, and bit operations without panicking. Everything below is C.
