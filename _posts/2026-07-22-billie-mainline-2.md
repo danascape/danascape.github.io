@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Mainlining OnePlus Nord N10 5G - Part 2: The Touchscreen"
+title: "OnePlus Nord N10 5G - The Touchscreen"
 date: 2026-07-22 00:00:01 +0530
 categories: [Mainline]
 tags: [Linux, Mainline, Qualcomm, Touchscreen]
-description: "How to actually write a touchscreen driver from nothing, the APIs, the method, and everything that broke"
+description: "A phone you cannot touch is just an expensive paperweight."
 author: danascape
 toc: true
 ---
@@ -12,8 +12,6 @@ toc: true
 ## Recap
 
 In Part 1 I got **billie** (the OnePlus Nord N10 5G, `SM6350`) booting a mainline kernel to a framebuffer console with SSH over USB. At the end of that post there was a long list of things that did not work. Right at the top of it: **touchscreen**.
-
-A phone you cannot touch is just an expensive paperweight, so that is where I went next.
 
 I wrote this as the post I wish I had when I started. It is long on purpose. It is both a from-scratch guide to **how a touchscreen driver actually works**, and an honest log of everything I got wrong. If you have never written a driver, start at the top and do not skip. If future-me has forgotten the Linux kernel entirely and is staring at another dead touchscreen, this should be enough to get going again from zero. billie's **Himax HX83112F** is just the specimen on the table.
 
@@ -25,15 +23,13 @@ A handful of concepts, in plain terms, because the rest of the post leans on the
 
 - **Kernel vs userspace.** A driver is code that runs *inside* the kernel, with direct access to hardware. Apps run in userspace and are not allowed near hardware; they ask the kernel.
 - **Device and driver.** Hardware is a "device". Code that runs it is a "driver". They are matched at boot.
-- **Device tree.** On phones and embedded boards, there is no BIOS enumerating hardware. Instead a text file, the **device tree**, describes what exists and where (this chip is on SPI bus 0, its reset line is GPIO 21, its interrupt is GPIO 22). The kernel reads it at boot.
+- **Device tree.** On phones, there is no BIOS enumerating hardware. Instead a device tree file, describes what exists and where (this chip is on SPI bus 0, its reset line is GPIO 21, its interrupt is GPIO 22). The kernel reads it at boot.
 - **compatible + probe.** A driver advertises one or more `compatible` strings. When a device tree node has a matching `compatible`, the kernel calls the driver's `probe()` function. `probe()` is where a driver's life begins.
 - **Bus.** The CPU reaches a peripheral over a bus. Touch chips sit on **I2C** or **SPI**, both simple serial buses: you shift bytes out, you shift bytes in.
 - **Interrupt (IRQ).** Rather than the CPU constantly asking "any data yet?", the chip tugs a dedicated wire when it has something. The kernel responds by calling your handler.
 - **Input subsystem.** The kernel's standard pipe for input devices. You do not talk to Android or X11; you push events into the input core and they flow upward on their own.
 
-If those words are fog right now, here is where the fog lifts, and these hold up over the years:
-
-- **Linux Device Drivers, 3rd edition** (free online). It targets an ancient 2.6 kernel so the *exact* APIs are wrong, but the *ideas*, modules, probe, interrupts, concurrency, are timeless. Read it for concepts, not copy-paste.
+- **Linux Device Drivers, 3rd edition** (free). It targets an ancient 2.6 kernel so the *exact* APIs are wrong, but the *ideas*, modules, probe, interrupts, concurrency, are timeless. Read it for concepts, not copy-paste.
 - **Bootlin** training slides (free) and, more importantly, their **Elixir** source browser at `elixir.bootlin.com`. This is the single most useful tool you will use.
 - The kernel's own **`Documentation/`** tree, especially `Documentation/input/` and `Documentation/driver-api/`.
 - **kernelnewbies.org** for the gentler on-ramps.
@@ -98,20 +94,21 @@ Sometimes you are not so lucky, no cousin, no vendor source, just a chip. The es
 - **Identify the chip.** Board markings, the downstream device tree (`compatible`, a `chip-name` property), a schematic if you can find one, or probing the bus. On billie the downstream DTS literally names it: `chip-name = "hx83112f"`.
 - **Hunt the datasheet.** For phone touch chips it is almost always under NDA and you will not get it. So the vendor Android driver, wherever it lives (a LineageOS device tree, a random GitHub dump), *becomes* your datasheet. That is exactly how I got every Himax register; I never saw an official datasheet.
 - **If you truly have nothing**, put a logic analyzer on the SPI or I2C lines while the stock ROM runs. You will see the exact byte sequences the working driver sends: the init, then the repeated coordinate reads. You reproduce them.
-- **Deduce the report format empirically.** Dump the raw bytes the chip sends on each interrupt, touch known points on the screen, and watch which bytes move. That is reverse engineering in its purest form, and, spoiler, I ended up doing a miniature version of it *even with* a reference driver, when the interrupt storm hit. Dumping the raw 56-byte frame (further down) is that same technique.
+- **Deduce the report format empirically.** Dump the raw bytes the chip sends on each interrupt, touch known points on the screen, and watch which bytes move. That is reverse engineering in its purest form, I ended up doing a micro version of *with* a reference driver, when the interrupt storm hit. Dumping the raw 56-byte frame (further down) is that same technique.
 
 The point: a driver is just a faithful reproduction of a conversation the hardware already knows how to have. Your job is to learn the conversation, from source, from a bus trace, or from raw bytes.
 
 ## The method: build one link at a time
 
-Do not write the whole driver and then switch it on. Build the chain link by link and *prove each link before adding the next*. My git history for this driver is literally this ladder, one commit per rung:
+Do not write the whole driver and then switch it on. Build the chain link by link and *prove each link before adding the next*:
 
 1. **probe binds, SPI works, IC-ID reads back `0x83112f`** → the bus, mode, and framing are correct.
 2. **firmware loads from the filesystem** → the path and timing are correct.
 3. **firmware downloads into SRAM and the CRC passes** → the chip is programmed.
 4. **the IRQ fires and a frame decodes into input events** → touch works.
 
-At every rung, `dev_info()` / `dev_dbg()` is your microscope: print what you read, eyeball it against what you expected. The payoff is huge, when something breaks, you already know which rung you are on, because every rung below it printed success. Almost every "finding" in this post is a rung that lied about succeeding.
+At every rung, `dev_info()` / `dev_dbg()` is your microscope: print what you read.
+The payoff is huge, when something breaks, you already know which rung you are on, because every rung below it printed success. Almost every "finding" in this post is a rung that lied about succeeding.
 
 With the theory out of the way, here is the driver, in the order I built it.
 
@@ -137,7 +134,7 @@ static struct spi_driver himax_spi_driver = {
 module_spi_driver(himax_spi_driver);
 ```
 
-I did not write this from memory. I opened the cousin driver, saw this exact pattern, and changed the names. When the device tree has a node under an SPI controller whose `compatible` matches, the kernel calls your `probe()` with a `struct spi_device *`. That is your entry point:
+I did not write this from memory. I opened the reference driver, saw this exact pattern, and changed the names. When the device tree has a node under an SPI controller whose `compatible` matches, the kernel calls your `probe()` with a `struct spi_device *`. That is your entry point:
 
 ```c
 static int himax_probe(struct spi_device *spi)
@@ -148,7 +145,7 @@ static int himax_probe(struct spi_device *spi)
 
     spi->mode = SPI_MODE_3;      /* clock polarity/phase the chip wants */
     spi->bits_per_word = 8;
-    ret = spi_setup(spi);        /* push that config to the controller  */
+    ret = spi_setup(spi);        /* pushing the config to controller  */
     if (ret)
         return dev_err_probe(dev, ret, "SPI setup failed\n");
 
@@ -219,7 +216,7 @@ input_sync(ts->input);
 - `input_mt_sync_frame()` is the magic broom: it releases any slot you did not touch this frame and synthesizes `BTN_TOUCH` plus single-touch emulation for you.
 - `input_sync()` commits the frame. Nothing reaches userspace until you call it. Forgetting this is a classic "my events vanish" bug.
 
-### touchscreen_parse_properties() and the 1x1 trap
+### touchscreen_parse_properties()
 
 `touchscreen_parse_properties(input, multitouch, &props)` reads standard device tree properties, `touchscreen-size-x/y`, `touchscreen-inverted-x/y`, `touchscreen-swapped-x-y`, into a `struct touchscreen_properties`. Then `touchscreen_report_pos()` applies inversion and axis-swap for you. This is why orientation fixes become a one-line DT change instead of code. Learn these two helpers.
 
@@ -238,7 +235,7 @@ if (!device_property_read_u32_array(dev, "touchpanel,panel-coords", coords, 2)) 
 }
 ```
 
-Range became `1080x2400`, Android switched to `mode DIRECT, display id 0`. Lesson: an input device with no axis range is not "empty", it is actively broken, and userspace disables it without a word.
+Range became `1080x2400`, Android switched to `mode DIRECT, display id 0`. Lesson: an input device with no axis range is not "empty", it is actively broken, and userspace disables it.
 
 ## Talking to the chip: every controller is a snowflake
 
@@ -257,7 +254,7 @@ Reads are a two-transfer sequence, send the command, then clock in the reply, bo
 struct spi_transfer xfers[2] = { };
 xfers[0].tx_buf = ts->tx_buf;   /* [0xf3][reg][0x00]        */
 xfers[0].len = 3;
-xfers[1].rx_buf = ts->rx_buf;   /* reply lands here          */
+xfers[1].rx_buf = ts->rx_buf;   /* reply is here          */
 xfers[1].len = len;
 spi_sync_transfer(ts->spi, xfers, ARRAY_SIZE(xfers));
 ```
@@ -274,11 +271,11 @@ Read `0x900000d0`, drop the low byte, expect `0x83112f`. The moment that matched
 > SPI transfer buffers should be their own kmalloc'd region, not stack variables, because the controller may DMA them. I keep one `tx_buf`/`rx_buf` pair in my state struct, behind a mutex.
 {: .prompt-tip }
 
-## The no-flash problem, and loading firmware
+## The no-flash and loading firmware
 
 Most touch controllers keep firmware in on-chip flash. Flash once, forget.
 
-The HX83112F has **no flash**. Its firmware is a blob in the rootfs that must be **downloaded into the chip's SRAM after every reset** before it does anything at all. No firmware, no interrupts, no touch. This single fact drives most of the hard parts below.
+The HX83112F on my device has **no flash**. Its firmware is a blob that must be **downloaded into the chip's SRAM after every reset** before it does anything at all. No firmware, no interrupts, no touch. This single fact drives most of the hard parts below, and can vary per touchscreen.
 
 Loading a blob is `request_firmware()`:
 
@@ -325,7 +322,7 @@ static void himax_fw_work(struct work_struct *work)
 }
 ```
 
-**Finding #3, a dead end worth knowing.** Before I understood the ueventd angle, I tried dodging the filesystem entirely with `CONFIG_EXTRA_FIRMWARE`, which bakes a blob straight into the kernel image (built-in firmware is checked before any filesystem, so the timing problem vanishes). I dropped it: it bloats `vmlinux`, needs a kernel rebuild to change firmware, and is the wrong model for upstream where the blob belongs in `/lib/firmware`. But it is a legitimate escape hatch if a firmware-timing wall is blocking your bring-up and you just want to move on.
+**Finding #3, a dead end worth knowing.** Before I understood the ueventd angle, I also tried dropping the filesystem entirely with `CONFIG_EXTRA_FIRMWARE`. I dropped it: it bloats `vmlinux`, and is the wrong model for upstream where the blob belongs in `/lib/firmware`. But it is an escape hatch while testing.
 
 ## Getting the firmware into the chip: zero-flash download
 
@@ -333,10 +330,10 @@ Having the blob in RAM is not enough; it has to land in the chip's SRAM in the e
 
 - The 64K body goes to SRAM at `0x20000000`.
 - The partition table is parsed, its config partitions merged into one contiguous SRAM window, and that is written too.
-- Both are checked with the chip's **hardware CRC engine**, which I cross-check against a CRC-32C computed in software.
+- Both are checked with the chip's **hardware CRC engine**, which I cross-check against a CRC-32C.
 - Flash-reload is disabled so the chip runs from SRAM, and the front-end is "sensed on".
 
-Nothing clever, but unforgiving: one wrong address and the CRC quietly fails while everything still says "done". If you port a chip like this, get the memory map byte-exact and *verify the CRC* before trusting anything downstream of it. This was rung 3, and the CRC passing is what proved it.
+Nothing clever, but unforgiving: one wrong address and the CRC quietly fails while everything still says "done". If you port a chip like this, get the memory map byte-exact and *verify the CRC* before trusting anything downstream of it.
 
 ## Reset and power: GPIOs the modern way
 
@@ -365,7 +362,7 @@ reset-gpios = <&tlmm 21 GPIO_ACTIVE_LOW>;
 
 `GPIO_ACTIVE_LOW` is not cosmetic: this chip is held in reset by driving the line *low*, so with the flag set, my logical "assert" (value 1) does the right physical thing and the pulse comes out high -> low -> high, matching the vendor's reset sequence. Wrong polarity and you either never reset the chip or hold it in reset forever.
 
-## The interrupt: a threaded IRQ, and a storm
+## The interrupt
 
 The chip signals "I have data" by pulling its interrupt line. You handle it with a **threaded IRQ**, because reading the data means SPI transfers that can sleep, and you cannot sleep in a hard-IRQ context:
 
@@ -376,7 +373,7 @@ devm_request_threaded_irq(dev, spi->irq, NULL, himax_irq,
 
 - `spi->irq` is filled in from the `interrupts` property on the DT node, you do not request a GPIO IRQ by hand.
 - The 4th argument is your **threaded** handler, run in a kernel thread where sleeping is fine. The hard handler (3rd arg) is `NULL`.
-- `IRQF_ONESHOT` keeps the line masked until your thread finishes, exactly what you want for a level-triggered line you are about to drain over a slow bus.
+- `IRQF_ONESHOT` keeps the line masked until your thread finishes.
 
 Inside, you read the coordinate FIFO, checksum it, decode each contact, report the frame:
 
@@ -412,7 +409,7 @@ struct himax_event {
 static_assert(sizeof(struct himax_event) == 56);
 ```
 
-I got that layout by reading how the vendor's `himax_get_touch_points()` indexes its buffer, then confirmed it empirically (below).
+I got that layout by reading how the vendor's `himax_get_touch_points()` indexes its buffer, then confirmed it.
 
 **Finding #5, the good one.** Firmware loaded, CRC clean, `touchscreen ready` in the log, and touch did not work. `getevent` showed nothing. So I checked the interrupt count:
 
@@ -423,21 +420,20 @@ $ grep himax /proc/interrupts
 316:  210399  ...  msmgpio  22 Level  himax-hx83112f
 ```
 
-Climbing by thousands per second, nobody touching the screen. An **interrupt storm**.
+Climbing by thousands per second, on a single touching of the screen. An **interrupt storm**.
 
 The line is level-triggered and active-low. The chip pulls it low when a frame is ready and releases it once you *read the frame out of the FIFO*. My handler was reading, but in the wrong bus mode, so it got garbage, failed the checksum, and returned without actually draining the FIFO. Line stays low, handler fires again, forever, and every frame is junk so `getevent` stays silent. Two symptoms, one cause.
 
-To *see* what the chip was sending, I added a temporary dump of the raw 56 bytes on each interrupt, and this is the reverse-engineering-from-scratch technique showing up even with a reference in hand: touch a known spot, watch which bytes carry the coordinate. The bytes confirmed my struct layout was right; the problem was the read mode. The fix was one call the vendor makes before every coordinate read and I had skipped, putting the AHB into continuous burst mode first:
+To *see* what the chip was sending, I added a dump of the raw 56 bytes on each interrupt: touch a known spot, watch which bytes carry the coordinate. The bytes confirmed my struct layout was right; the problem was the read mode. The fix was one call the vendor makes before every coordinate read and I had skipped, putting the AHB into continuous burst mode first:
 
 ```c
-/* Without this the FIFO read returns garbage, the checksum fails every
- * time, and the level-low line never clears -> interrupt storm. */
 himax_burst_enable(ts, false);
 ```
 
-One line. The storm stopped and `getevent` lit up with `ABS_MT_POSITION_X/Y`, tracking IDs, and clean `BTN_TOUCH`, ten fingers, independent slots. If you ever see a rising interrupt count with no input events, this is the shape of the bug: you are being interrupted but not acknowledging it, and for most chips "acknowledge" means "read the data".
+One line. The storm kinda stopped and `getevent` started working!
+If you ever see a rising interrupt count with no input events, this is the shape of the bug: you are being interrupted but not acknowledging it, and for most chips "acknowledge" means "read the data".
 
-## Suspend, resume, and the in-cell tax
+## Suspend, resume
 
 Touch worked. Then I locked the screen, unlocked it, and touch was dead again.
 
@@ -450,63 +446,25 @@ if (event == DRM_PANEL_EARLY_EVENT_BLANK && blank == DRM_PANEL_BLANK_POWERDOWN) 
     /* screen off: quiet the IRQ before the chip loses power */
     disable_irq(ts->spi->irq);
 } else if (event == DRM_PANEL_EVENT_BLANK && blank == DRM_PANEL_BLANK_UNBLANK) {
-    /* screen on: SRAM is empty again, reload firmware and resume */
+    /* screen on: SRAM is empty again, reload firmware */
     himax_download_firmware(ts);
     enable_irq(ts->spi->irq);
 }
 ```
 
-You register for this with `drm_panel_notifier_register()`, after finding the panel from the `panel` phandle on your node with `of_drm_find_panel()` (return `-EPROBE_DEFER` until the panel driver appears). Disabling the IRQ *before* power-down matters too: an unpowered input can float and drop you right back into a storm. If your device is in-cell, budget for this from the start, it fires every single time the screen turns off.
+You register for this with `drm_panel_notifier_register()`, after finding the panel from the `panel` phandle on your node with `of_drm_find_panel()` (return `-EPROBE_DEFER` until the panel driver appears). Disabling the IRQ *before* power-down matters since an unpowered input can float. If your device is in-cell, budget for this from the start, it fires every single time the screen turns off.
 
 ## The kernel-version tax: writing for 4.19
 
-I built this on the mainline `himax_hx83112b` cousin, but billie's downstream kernel is **4.19**, and the cousin uses APIs that do not exist that far back. This is normal backporting friction, and worth naming because you will hit it. I only caught each one by trying to compile and reading the error, then grepping my tree's headers to confirm the helper was missing and find the older equivalent:
-
-| Modern API | What I used on 4.19 |
-| --- | --- |
-| `guard(mutex)` / `scoped_guard()` (cleanup.h) | plain `mutex_lock()` / `mutex_unlock()` |
-| `devm_mutex_init()` | `mutex_init()` |
-| `DEFINE_SIMPLE_DEV_PM_OPS` / `pm_sleep_ptr()` | `SIMPLE_DEV_PM_OPS` + `__maybe_unused` |
-
-The lesson is dull but real: the kernel's helper APIs drift constantly, and a driver written against 6.x will not build on 4.19. When you copy from a newer driver, check every helper against *your* tree (Elixir with the version dropdown, or just grep your headers) before trusting it.
-
-## The display was married to the touch driver
-
-One downstream-only knot caught me completely off guard, and it is a good warning about vendor trees.
-
-When I disabled the vendor touch driver to build mine, the **display** stopped linking:
-
-```
-ld.lld: error: undefined symbol: TP_Panel
->>> referenced by dsi_panel.c
-```
-
-The display driver publishes the active panel pointer into a global called `TP_Panel`, and the *storage* for that global lived inside the vendor touch driver. Remove the touch driver, remove the symbol, break the display. On this device, touch and display are quietly welded together. I found the culprit by grepping the whole tree for `TP_Panel` and reading who defined versus referenced it.
-
-I moved the definition into a part of the vendor stack that is always built, so the display links whether my driver is present or not. On mainline this coupling does not exist, so it evaporates on the way up. But it is a reminder: in a vendor tree, "unrelated" subsystems often are not.
+I built the driver on the mainline `himax_hx83112b` cousin, but billie's downstream kernel is **4.19**, since I wanted to majorly test this on android, which was running on downstream LTS.
 
 ## Wiring it into the build
 
-Three files make the driver real:
-
-- **Kconfig**, with one important twist. Both my driver and the vendor one bind the same `himax,hxcommon` node, so they must be mutually exclusive:
-
-  ```
-  config TOUCHSCREEN_HIMAX_HX83112F
-      tristate "Himax HX83112F no-flash touchscreen (minimal)"
-      depends on SPI_MASTER
-      depends on DRM
-      depends on !TOUCHPANEL_HIMAX_HX83112F_NOFLASH
-  ```
-
-- **Makefile**: `obj-$(CONFIG_TOUCHSCREEN_HIMAX_HX83112F) += himax_hx83112f.o`
-- **Device tree**: the `reset-gpios` property from Finding #4, on the existing touch node.
-
-Then the defconfig switch: vendor driver off, mine on.
+Pretty obvious to write Makefile, Kconfig and defconfig entry.
 
 ## Does it work?
 
-Two commands tell you everything. `getevent` shows the raw stream, one finger down and up:
+`getevent` shows the raw stream, one finger down and up:
 
 ```
 EV_ABS  ABS_MT_TRACKING_ID  0000005c
@@ -518,34 +476,11 @@ EV_ABS  ABS_MT_TRACKING_ID  ffffffff
 EV_KEY  BTN_TOUCH           UP
 ```
 
-Five fingers give five `ABS_MT_SLOT` blocks with distinct tracking IDs. And `/proc/interrupts` now sits still when idle and only ticks up when you actually touch, the exact opposite of the storm.
+Five fingers give five `ABS_MT_SLOT` blocks with distinct tracking IDs. And `/proc/interrupts` now sits still when idle and only ticks up when you actually touch.
 
 ```
 himax-hx83112f spi0.0: touchscreen ready (fw 131072 bytes)
 ```
-
-## Taking it to mainline
-
-The whole thing is a single self-contained SPI driver, which was the point. The downstream-only pieces are deliberately isolated so the port up is mostly subtraction:
-
-- the `himax,hxcommon` compatible becomes a proper `himax,hx83112f`
-- the `touchpanel,panel-coords` fallback becomes standard `touchscreen-size-x/y`
-- the ueventd firmware timing goes away; the blob just lives in `/lib/firmware`
-- the `TP_Panel` move and the Kconfig swap are downstream-only and do not travel
-
-## What Doesn't Work Yet
-
-Same list as Part 1, minus one line:
-
-- ~~No touchscreen~~
-- No DRM display driver (still on simple-framebuffer)
-- No audio
-- No modem
-- No Wi-Fi
-- No cameras
-- No battery reporting
-
-Part 3 will keep chipping away at it.
 
 `A driver is a faithful reproduction of a conversation the hardware already knows how to have. Learn the conversation, prove it one line at a time.`
 
