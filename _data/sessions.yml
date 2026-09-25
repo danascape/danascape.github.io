@@ -1,0 +1,15 @@
+# Talks, workshops and presentations shown at /sessions/
+#
+# Entries render top to bottom in the order listed here, so newest first.
+# Only `title` and `url` are required; everything else is optional.
+#
+# - title: "Launcher3: Architecture and Internals"
+#   url: https://docs.google.com/presentation/d/xxxxxxxx
+#   event: "Android Bangalore Meetup"
+#   date: 2026-09-20                      # YYYY-MM-DD
+#   kind: Slides                          # Slides / Video / Workshop / Paper
+#   description: "How the home screen, drawer and Recents share one process."
+#
+# Replace the empty list below with your entries.
+
+[]
