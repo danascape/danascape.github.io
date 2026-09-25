@@ -10,6 +10,8 @@
 #   kind: Slides                          # Slides / Video / Workshop / Paper
 #   description: "How the home screen, drawer and Recents share one process."
 #
-# Replace the empty list below with your entries.
+# Add new entries at the top.
 
-[]
+- title: "Launcher3 Internals: Understanding Android’s Home Screen, Google Feed Integration, and custom -1 Panels"
+  url: https://docs.google.com/presentation/d/1aEyBdq4wArka4ZrO9UvxE9gIp8Ou9PfUtO-OL_EWnBQ/edit?usp=sharing
+  kind: Slides
