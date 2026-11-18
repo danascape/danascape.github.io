@@ -211,9 +211,12 @@ article[data-toc] .content {
 }
 
 .reading-left {
+  /* bottom centre: bottom-left is Chirpy's sidebar footer, bottom-right its back-to-top button */
   position: fixed;
-  left: 1rem;
+  left: 50%;
   bottom: 1rem;
+  transform: translateX(-50%);
+  white-space: nowrap;
   z-index: 1100;
   padding: 0.25rem 0.75rem;
   border: 1px solid var(--main-border-color);
