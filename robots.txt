@@ -2,4 +2,4 @@ User-agent: *
 
 Disallow: /norobots/
 
-Sitemap: https://danascape.github.io/sitemap.xml
+Sitemap: https://squadri.me/sitemap.xml
