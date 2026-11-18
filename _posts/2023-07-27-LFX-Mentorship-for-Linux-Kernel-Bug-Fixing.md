@@ -15,7 +15,7 @@ Learn more about the Linux Foundation Mentorship programme, and hear from someon
 ## What is LFX mentorship?
 *"The Linux Foundation Mentorship Program is designed to help developers — many of whom are first-time open source contributors — with necessary skills and resources to learn, experiment, and contribute effectively to open source communities. By participating in a mentorship program, mentees have the opportunity to learn from experienced open source contributors as a segue to get internship and job opportunities upon graduation."*
 
-Please have a look at the Mentorship guide to learn how to participate in LFX Mentorship programs: [lfx.linuxfoundation.org/mentorship/guide][lfx-guide]
+Please have a look at the Mentorship guide to learn how to participate in LFX Mentorship programs: [docs.linuxfoundation.org/lfx/mentorship][lfx-guide]
 
 ## Linux Kernel Mentorship Programme (LKMP)
 Linux Foundation mentorship programs offer unique opportunities for aspiring developers to contribute to the Linux Kernel, which is the core of the Linux Operating System. The Linux Kernel is an open-source project that continuously evolves through the collective effort of thousands of developers worldwide.
@@ -83,7 +83,7 @@ Got thoughts, feedback, or just want to drop a hi?
 
 <hr style="margin-top: 20px;">
 
-[lfx-guide]: lfx.linuxfoundation.org/mentorship/guide
+[lfx-guide]: https://docs.linuxfoundation.org/lfx/mentorship
 [lfx-portal]: https://lfx.linuxfoundation.org/tools/mentorship/
 [lore-saalim]: https://lore.kernel.org/lkml/?q=danascape
 [shuahkhan-profile]: https://mentorship.lfx.linuxfoundation.org/mentor/5b5c6ac7-5735-4ed6-9666-4ddd0a140c0c
