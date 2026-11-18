@@ -1,0 +1,82 @@
+# Glossary for post tooltips (assets/js/post-extras.js).
+#
+# The first time a term appears in a post's text (not in code, links or headings)
+# it gets a dotted underline; hovering, focusing or tapping it shows the definition.
+# Matching is case-sensitive and whole-word. Add `glossary: false` to a post's
+# front matter to turn tooltips off for that post.
+#
+# Keep definitions to one or two short sentences. Markdown is not rendered.
+
+# ---- Boot chain / Qualcomm
+PBL: "Primary Boot Loader. Qualcomm's first boot code, in the SoC's ROM; it verifies and loads XBL."
+XBL: "eXtensible Boot Loader. Qualcomm's second-stage loader: initialises DDR and core hardware, then runs the platform UEFI."
+ABL: "Android Boot Loader. A UEFI application on Qualcomm phones that loads the Android kernel and implements fastboot."
+fastboot: "The bootloader's USB protocol (and host tool) for flashing partitions and booting images."
+AVB: "Android Verified Boot. Checks boot, system and other partitions against signed hashes before using them."
+vbmeta: "The AVB metadata partition: hashes, descriptors and signatures for the partitions AVB verifies."
+GPT: "GUID Partition Table. The partition table format used by UEFI systems and modern Android phones."
+UFS: "Universal Flash Storage. The fast storage standard used in most modern phones."
+PMIC: "Power Management IC. Supplies and regulates the power rails; on phones it also handles the power key and charging."
+DDR: "The phone's main memory (LPDDR SDRAM)."
+SoC: "System on a Chip: CPU, GPU, modem and other blocks on one die, e.g. a Snapdragon."
+TrustZone: "ARM's security extension that splits the CPU into a secure world and a normal world."
+Gunyah: "Qualcomm's hypervisor, running at EL2 on recent Snapdragon chips."
+
+# ---- ARM64
+EL1: "ARM64 exception level 1: where an OS kernel runs."
+EL2: "ARM64 exception level 2: where a hypervisor runs."
+EL3: "ARM64 exception level 3: the secure monitor, the most privileged firmware."
+ELR: "Exception Link Register. On ARM64, the address to return to after an exception, usually the faulting instruction."
+ESR: "Exception Syndrome Register. On ARM64, encodes why an exception happened."
+FAR: "Fault Address Register. On ARM64, the memory address that caused an abort."
+GIC: "Generic Interrupt Controller. ARM's standard interrupt controller."
+SMMU: "System Memory Management Unit. ARM's IOMMU: translates and restricts memory accesses made by devices."
+PSCI: "Power State Coordination Interface. ARM's firmware interface for turning CPUs on and off and for suspend."
+
+# ---- UEFI
+UEFI: "Unified Extensible Firmware Interface. The standard interface between platform firmware and the OS loader; BIOS's successor."
+EDK2: "EFI Development Kit II (TianoCore). The open-source reference implementation of UEFI."
+PEI: "Pre-EFI Initialization. The early UEFI phase that sets up memory and hands information to DXE."
+DXE: "Driver Execution Environment. The UEFI phase where most drivers load and run."
+HOB: "Hand-Off Block. How PEI passes information, such as the memory map, to DXE."
+FD: "Flash Device image. The single firmware binary EDK2 builds, containing the firmware volumes."
+APRIORI: "A list in a firmware volume naming the drivers that must be loaded first, in order."
+ExitBootServices: "The UEFI call an OS loader makes to take over; afterwards only runtime services remain."
+GUID: "Globally Unique Identifier: a 128-bit ID. UEFI names protocols, files and variables by GUID."
+ESP: "EFI System Partition. A FAT partition holding UEFI boot loaders such as Windows Boot Manager."
+
+# ---- ACPI
+ACPI: "Advanced Configuration and Power Interface. Tables from the firmware that describe hardware to the OS; Windows needs them instead of a device tree."
+DSDT: "Differentiated System Description Table. The main ACPI table, with AML describing the platform's devices."
+SSDT: "Secondary System Description Table. Extra AML tables that extend the DSDT."
+ASL: "ACPI Source Language. Human-readable source for ACPI tables, compiled to AML with iasl."
+AML: "ACPI Machine Language. The bytecode the OS interprets from ACPI tables."
+XHCI: "eXtensible Host Controller Interface. The standard USB host controller interface."
+
+# ---- Windows
+WinPE: "Windows Preinstallation Environment. A minimal Windows used for installation and recovery."
+WIM: "Windows Imaging Format. The file-based image format of Windows install media (install.wim, boot.wim)."
+BCD: "Boot Configuration Data. The database Windows Boot Manager reads to decide what to boot and how."
+RVA: "Relative Virtual Address. An address relative to where an executable image is loaded."
+PDB: "Program Database. Microsoft's debug-symbol format, mapping addresses to function names."
+
+# ---- Linux / device tree
+DTS: "Device Tree Source. Human-readable hardware description, compiled to a DTB with dtc."
+DTB: "Device Tree Blob. The compiled device tree the bootloader passes to the Linux kernel."
+DTBO: "Device Tree Blob Overlay. A compiled overlay applied on top of a base DTB."
+GKI: "Generic Kernel Image. Google's common Android kernel binary, with vendor code in loadable modules."
+LTS: "Long-Term Support. A kernel branch that keeps receiving fixes for several years."
+BSP: "Board Support Package. The vendor kernel, drivers and configs needed to run an OS on specific hardware."
+
+# ---- Android platform
+AOSP: "Android Open Source Project. The open-source code base of Android."
+HAL: "Hardware Abstraction Layer. Android's interface between the framework and vendor hardware code."
+AIDL: "Android Interface Definition Language. Defines interfaces for IPC over Binder."
+Binder: "Android's inter-process communication mechanism: a kernel driver plus userspace libraries."
+SELinux: "Security-Enhanced Linux. Mandatory access control; Android enforces a policy on every process and file."
+Zygote: "The Android process that preloads the framework and forks every app process."
+Treble: "Project Treble. Android's split between the framework and vendor code, with stable interfaces between them."
+VNDK: "Vendor Native Development Kit. The system libraries vendor code is allowed to link against."
+GSI: "Generic System Image. A pure-AOSP system image that boots on any Treble-compliant device."
+APEX: "Android Pony EXpress. The package format for updatable system components."
+Gerrit: "The web-based code review tool used by AOSP and many Android projects."

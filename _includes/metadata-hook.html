@@ -1,4 +1,8 @@
 <script src="/assets/js/pwa-popup.js" defer></script>
 {% if page.layout == "post" %}
-<script src="{{ "/assets/js/reading-progress.js" | relative_url }}" defer></script>
+<script src="{{ "/assets/js/reading-progress.js" | relative_url }}?v={{ site.time | date: "%s" }}" defer></script>
+<script src="{{ "/assets/js/post-extras.js" | relative_url }}?v={{ site.time | date: "%s" }}" defer></script>
+{% unless page.glossary == false %}
+<script type="application/json" id="glossary-data">{{ site.data.glossary | jsonify }}</script>
+{% endunless %}
 {% endif %}

@@ -269,3 +269,142 @@ article[data-toc] .content {
     margin-top: 0.6rem;
   }
 }
+
+/* ---------- popover: glossary + footnotes (assets/js/post-extras.js) ---------- */
+.post-pop {
+  position: absolute;
+  z-index: 1200;
+  max-width: min(22rem, calc(100vw - 1rem));
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--main-border-color);
+  border-radius: 0.5rem;
+  background: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: 0 6px 24px rgb(0 0 0 / 18%);
+  font-size: 0.9rem;
+  line-height: 1.5;
+
+  strong {
+    color: var(--heading-color);
+  }
+
+  p {
+    margin: 0 0 0.4rem;
+  }
+
+  .post-pop-jump {
+    display: inline-block;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+  }
+}
+
+.content button.gloss {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--text-muted-color);
+  text-underline-offset: 3px;
+  cursor: help;
+
+  &:hover,
+  &[aria-expanded='true'] {
+    text-decoration-color: var(--link-color);
+  }
+}
+
+/* ---------- long code blocks ---------- */
+/* plain <pre> blocks (languages Rouge can't highlight) get wrapped in .code-plain by the script */
+.content .code-plain {
+  margin-bottom: 1rem;
+
+  > pre {
+    margin-bottom: 0;
+  }
+}
+
+.content div.highlighter-rouge.code-collapsed .highlight,
+.content .code-plain.code-collapsed > pre {
+  max-height: 28rem;
+  overflow-y: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 75%, transparent);
+  mask-image: linear-gradient(to bottom, #000 75%, transparent);
+}
+
+.content .code-expand {
+  display: block;
+  width: 100%;
+  padding: 0.4rem;
+  border: 0;
+  border-top: 1px solid var(--main-border-color);
+  background: none;
+  color: var(--link-color);
+  font-size: 0.85rem;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@media print {
+  .content div.highlighter-rouge.code-collapsed .highlight,
+  .content .code-plain.code-collapsed > pre {
+    max-height: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .code-expand,
+  .resume-toast,
+  .reading-progress,
+  .reading-left {
+    display: none !important;
+  }
+}
+
+/* ---------- continue where you left off ---------- */
+.resume-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  z-index: 1150;
+  display: flex;
+  align-items: center;
+  max-width: calc(100vw - 2rem);
+  border: 1px solid var(--main-border-color);
+  border-radius: 999px;
+  background: var(--card-bg);
+  box-shadow: 0 6px 24px rgb(0 0 0 / 18%);
+  font-size: 0.9rem;
+
+  button {
+    border: 0;
+    background: none;
+    min-height: 2.75rem;
+    cursor: pointer;
+  }
+
+  .resume-go {
+    padding: 0 0.5rem 0 1.1rem;
+    color: var(--link-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+
+  .resume-close {
+    padding: 0 0.9rem 0 0.5rem;
+    color: var(--text-muted-color);
+  }
+}
+
+body.has-resume .reading-left {
+  display: none;
+}

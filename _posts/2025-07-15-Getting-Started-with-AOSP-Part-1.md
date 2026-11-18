@@ -5,6 +5,7 @@ date: 2025-07-15 00:00:00 +0530
 categories: [AOSP Tutorials]
 tags: [AOSP, Android, OS]
 author: danascape
+pin: true
 series: "AOSP Tutorials"
 part_title: "Getting started"
 toc: true

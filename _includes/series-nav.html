@@ -47,7 +47,12 @@
     <nav class="series-nav{% if _parts.size > 6 %} series-nav-compact{% endif %}" aria-label="Series: {{ page.series | escape }}">
       <div class="series-nav-head">
         <span class="series-nav-name">{{ page.series }}</span>
-        <span class="series-nav-count">Part {{ _part }} of {{ _parts.size }}</span>
+        {%- comment -%} read_minutes comes from _plugins/read-minutes.rb {%- endcomment -%}
+        {%- assign _mins = 0 -%}
+        {%- for p in _parts -%}{%- assign _mins = _mins | plus: p.read_minutes -%}{%- endfor -%}
+        {%- assign _h = _mins | divided_by: 60 -%}
+        {%- assign _m = _mins | modulo: 60 -%}
+        <span class="series-nav-count">Part {{ _part }} of {{ _parts.size }} · ~{% if _h > 0 %}{{ _h }} h{% if _m > 0 %} {{ _m }} min{% endif %}{% else %}{{ _m }} min{% endif %} in total</span>
       </div>
       {%- if _parts.size > 6 -%}
         <div class="series-nav-step">
