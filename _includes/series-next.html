@@ -1,0 +1,14 @@
+{%- comment -%} "Next part" card after the post body, for posts with `series:`. {%- endcomment -%}
+{%- if page.series -%}
+  {%- assign _parts = site.posts | where: 'series', page.series | sort: 'date' -%}
+  {%- if page.part -%}{%- assign _parts = _parts | sort: 'part' -%}{%- endif -%}
+  {%- for p in _parts -%}{%- if p.url == page.url -%}{%- assign _part = forloop.index -%}{%- endif -%}{%- endfor -%}
+  {%- if _part and _part < _parts.size -%}
+    {%- assign _next = _parts[_part] -%}
+    <a class="series-next" href="{{ _next.url | relative_url }}">
+      <span class="series-next-label">Next · Part {{ _part | plus: 1 }} of {{ _parts.size }}</span>
+      <span class="series-next-title">{{ _next.title }} <i class="fas fa-arrow-right fa-sm"></i></span>
+      {%- if _next.description -%}<span class="series-next-desc">{{ _next.description }}</span>{%- endif -%}
+    </a>
+  {%- endif -%}
+{%- endif -%}

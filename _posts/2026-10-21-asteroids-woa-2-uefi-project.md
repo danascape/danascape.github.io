@@ -6,6 +6,14 @@ categories: [Windows on ARM]
 tags: [UEFI, Qualcomm, Mu-Silicium, ARM64, Reverse Engineering]
 description: "Most of a port is copying the right things from the right places."
 author: danascape
+series: "Windows on the Nothing Phone (3a)"
+tldr:
+  - "Set up Mu-Silicium and back up the phone's firmware"
+  - "Pull Qualcomm's UEFI drivers, memory map and config out of the stock firmware"
+  - "Create `MilosPkg` and `asteroidsPkg`, and build an image ABL will start (it won't fully boot yet)"
+prereqs:
+  - "[Part 1](/posts/asteroids-woa-1-theory/), or a working idea of boot chains, UEFI and ACPI"
+  - "An Ubuntu machine with ~5 GB free for the Mu-Silicium clone"
 toc: true
 ---
 

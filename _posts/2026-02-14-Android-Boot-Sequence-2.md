@@ -6,6 +6,9 @@ categories: [AOSP]
 tags: [Android, AOSP, Frameworks, Vendor]
 description: "What happens after init is started from kernel"
 author: danascape
+series: "Android Boot"
+part: 2
+part_title: "Framework boot sequence"
 toc: true
 ---
 

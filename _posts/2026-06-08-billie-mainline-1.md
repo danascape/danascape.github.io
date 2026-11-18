@@ -6,6 +6,8 @@ categories: [Mainline]
 tags: [Linux, Mainline, Qualcomm, postmarketOS]
 description: "You do not need much to boot a mainline kernel"
 author: danascape
+series: "Mainlining the OnePlus Nord N10 5G"
+part_title: "First boot"
 toc: true
 ---
 

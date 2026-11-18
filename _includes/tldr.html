@@ -1,0 +1,26 @@
+{%- comment -%}
+  Optional TL;DR card at the top of a post. Front matter, both optional:
+    tldr:      a string, or a list of points ("what you'll get from this post")
+    prereqs:   a list ("what you need before starting")
+  Markdown is allowed in each item.
+{%- endcomment -%}
+{%- if page.tldr or page.prereqs -%}
+  <aside class="tldr" aria-label="Summary">
+    {%- if page.tldr -%}
+      <div class="tldr-block">
+        <p class="tldr-label"><i class="fas fa-bolt fa-fw"></i> TL;DR</p>
+        {%- if page.tldr.first -%}
+          <ul>{%- for item in page.tldr -%}<li>{{ item | markdownify | remove: '<p>' | remove: '</p>' | strip }}</li>{%- endfor -%}</ul>
+        {%- else -%}
+          {{ page.tldr | markdownify }}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- if page.prereqs -%}
+      <div class="tldr-block">
+        <p class="tldr-label"><i class="fas fa-list-check fa-fw"></i> Before you start</p>
+        <ul>{%- for item in page.prereqs -%}<li>{{ item | markdownify | remove: '<p>' | remove: '</p>' | strip }}</li>{%- endfor -%}</ul>
+      </div>
+    {%- endif -%}
+  </aside>
+{%- endif -%}

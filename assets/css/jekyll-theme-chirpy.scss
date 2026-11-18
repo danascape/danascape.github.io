@@ -1,0 +1,237 @@
+---
+---
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+/* ------------------------------------------------------------------
+   Post tweaks on top of Chirpy (fonts and colours unchanged).
+   Scoped to article[data-toc], which only the post layout renders
+   (posts, devices, kernel and wiki pages).
+   ------------------------------------------------------------------ */
+
+article[data-toc] .content {
+  counter-reset: nb-h2 nb-listing;
+
+  /* numbered sections: §1, §1.2 */
+  h2 {
+    counter-increment: nb-h2;
+    counter-reset: nb-h3;
+  }
+
+  h3 {
+    counter-increment: nb-h3;
+  }
+
+  h2::before,
+  h3::before {
+    font-size: 0.65em;
+    font-weight: 400;
+    color: var(--text-muted-color);
+    margin-right: 0.6rem;
+    vertical-align: 0.12em;
+  }
+
+  h2::before {
+    content: '§' counter(nb-h2);
+  }
+
+  h3::before {
+    content: '§' counter(nb-h2) '.' counter(nb-h3);
+  }
+
+  /* numbered code listings: "Shell · Listing 3" */
+  div.highlighter-rouge {
+    counter-increment: nb-listing;
+  }
+
+  .code-header span::after {
+    content: attr(data-label-text) '  ·  Listing ' counter(nb-listing);
+    white-space: pre;
+  }
+}
+
+/* ---------- series strip (_includes/series-nav.html) ---------- */
+.series-nav {
+  margin: 0 0 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--main-border-color);
+  border-radius: 0.625rem;
+  background: var(--card-bg);
+  font-size: 0.95rem;
+
+  .series-nav-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .series-nav-name {
+    font-weight: 600;
+    color: var(--heading-color);
+  }
+
+  .series-nav-count {
+    color: var(--text-muted-color);
+  }
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a,
+  .current {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    border: 1px solid var(--main-border-color);
+    border-radius: 999px;
+    line-height: 1.6;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      border-color: var(--link-color);
+      color: var(--link-color);
+    }
+  }
+
+  .current {
+    border-color: var(--toc-highlight);
+    color: var(--toc-highlight);
+    font-weight: 600;
+  }
+
+  b {
+    font-weight: 700;
+    margin-right: 0.15rem;
+  }
+}
+
+/* ---------- next part card (_includes/series-next.html) ---------- */
+.series-next {
+  display: block;
+  margin: 2.5rem 0 1rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--main-border-color);
+  border-left: 0;
+  border-right: 0;
+  color: inherit;
+  text-decoration: none !important;
+
+  &:hover .series-next-title {
+    color: var(--link-color);
+  }
+
+  span {
+    display: block;
+  }
+
+  .series-next-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted-color);
+  }
+
+  .series-next-title {
+    margin-top: 0.25rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--heading-color);
+  }
+
+  .series-next-desc {
+    margin-top: 0.25rem;
+    color: var(--text-muted-color);
+  }
+}
+
+/* ---------- TL;DR card (_includes/tldr.html) ---------- */
+.tldr {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  margin: 0 0 1.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.625rem;
+  background: var(--prompt-tip-bg);
+
+  .tldr-block {
+    flex: 1 1 16rem;
+    min-width: 0;
+  }
+
+  .tldr-label {
+    margin: 0 0 0.35rem;
+    font-weight: 600;
+    color: var(--heading-color);
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  li,
+  p {
+    margin: 0.15rem 0;
+  }
+}
+
+/* ---------- reading progress (assets/js/reading-progress.js) ---------- */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 1100;
+  pointer-events: none;
+
+  div {
+    height: 100%;
+    background: var(--toc-highlight);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+  }
+}
+
+.reading-left {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 1100;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--main-border-color);
+  border-radius: 999px;
+  background: var(--main-bg);
+  color: var(--text-muted-color);
+  font-size: 0.8rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+
+  &.show {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reading-left {
+    transition: none;
+  }
+}

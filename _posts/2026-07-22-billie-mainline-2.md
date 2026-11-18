@@ -6,6 +6,7 @@ categories: [Mainline]
 tags: [Linux, Mainline, Qualcomm, Touchscreen]
 description: "A phone you cannot touch is just an expensive paperweight."
 author: danascape
+series: "Mainlining the OnePlus Nord N10 5G"
 toc: true
 ---
 

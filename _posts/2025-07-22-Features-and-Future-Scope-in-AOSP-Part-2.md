@@ -5,6 +5,8 @@ date: 2025-07-22 00:00:00 +0530
 categories: [AOSP Tutorials]
 tags: [AOSP, Android]
 author: danascape
+series: "AOSP Tutorials"
+part_title: "Features and future scope"
 toc: true
 ---
 

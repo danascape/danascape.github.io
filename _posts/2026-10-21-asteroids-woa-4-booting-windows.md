@@ -6,6 +6,7 @@ categories: [Windows on ARM]
 tags: [UEFI, Windows, Qualcomm, Mu-Silicium, ARM64, Reverse Engineering, ACPI]
 description: "Three minutes of a frozen logo, and a GUID I made up myself."
 author: danascape
+series: "Windows on the Nothing Phone (3a)"
 toc: true
 ---
 

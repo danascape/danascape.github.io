@@ -6,6 +6,7 @@ categories: [Windows on ARM]
 tags: [UEFI, Qualcomm, Mu-Silicium, ARM64, Reverse Engineering]
 description: "Every hang is a loop waiting for something that will never happen."
 author: danascape
+series: "Windows on the Nothing Phone (3a)"
 toc: true
 ---
 

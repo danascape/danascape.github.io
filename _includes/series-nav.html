@@ -1,0 +1,37 @@
+{%- comment -%}
+  Series strip under the post title.
+  Posts join a series with `series: "Name"` in front matter; parts are ordered by date.
+  Optional `part_title:` sets the short label; otherwise it is taken from the title
+  (text after the last " - ", then after ": ").
+{%- endcomment -%}
+{%- if page.series -%}
+  {%- assign _parts = site.posts | where: 'series', page.series | sort: 'date' -%}
+  {%- if page.part -%}{%- assign _parts = _parts | sort: 'part' -%}{%- endif -%}
+  {%- if _parts.size > 1 -%}
+    {%- for p in _parts -%}{%- if p.url == page.url -%}{%- assign _part = forloop.index -%}{%- endif -%}{%- endfor -%}
+    <nav class="series-nav" aria-label="Series: {{ page.series | escape }}">
+      <div class="series-nav-head">
+        <span class="series-nav-name">{{ page.series }}</span>
+        <span class="series-nav-count">Part {{ _part }} of {{ _parts.size }}</span>
+      </div>
+      <ol>
+        {%- for p in _parts -%}
+          {%- assign _short = p.part_title -%}
+          {%- unless _short -%}
+            {%- assign _short = p.title | split: ' - ' | last -%}
+            {%- if _short contains ': ' -%}{%- assign _short = _short | split: ': ' | last -%}{%- endif -%}
+            {%- assign _starts = _short | slice: 0, 5 -%}
+            {%- if _starts == 'Part ' -%}{%- assign _short = '' -%}{%- endif -%}
+          {%- endunless -%}
+          <li>
+            {%- if p.url == page.url -%}
+              <span class="current" aria-current="page"><b>{{ forloop.index }}</b>{% if _short != '' %} {{ _short }}{% endif %}</span>
+            {%- else -%}
+              <a href="{{ p.url | relative_url }}"><b>{{ forloop.index }}</b>{% if _short != '' %} {{ _short }}{% endif %}</a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ol>
+    </nav>
+  {%- endif -%}
+{%- endif -%}

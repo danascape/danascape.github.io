@@ -6,6 +6,9 @@ categories: [AOSP]
 tags: [Android, AOSP, Frameworks, Vendor]
 description: "What happens when you press power-on"
 author: danascape
+series: "Android Boot"
+part: 1
+part_title: "Qualcomm boot sequence"
 toc: true
 ---
 

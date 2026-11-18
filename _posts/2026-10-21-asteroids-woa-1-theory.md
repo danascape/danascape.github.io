@@ -6,6 +6,7 @@ categories: [Windows on ARM]
 tags: [UEFI, Windows, Qualcomm, Mu-Silicium, ARM64, ACPI]
 description: "Before you boot Windows on a phone, you need to know what booting even is."
 author: danascape
+series: "Windows on the Nothing Phone (3a)"
 toc: true
 ---
 
