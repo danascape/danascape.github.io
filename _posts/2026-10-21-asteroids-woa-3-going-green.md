@@ -7,6 +7,13 @@ tags: [UEFI, Qualcomm, Mu-Silicium, ARM64, Reverse Engineering]
 description: "Every hang is a loop waiting for something that will never happen."
 author: danascape
 series: "Windows on the Nothing Phone (3a)"
+tldr:
+  - "Take the firmware from a hang at `PmicDxe` to a booted UEFI with display, storage, buttons, USB and mass storage"
+  - "Find hangs in closed Qualcomm drivers by bisecting, then patch the loop they are waiting in"
+  - "Port other devices' binary patches by meaning, not by offset"
+prereqs:
+  - "[Part 2](/posts/asteroids-woa-2-uefi-project/): a Mu-Silicium build that ABL starts"
+  - "`llvm-objdump` and Python: you will be reading ARM64 disassembly"
 toc: true
 ---
 

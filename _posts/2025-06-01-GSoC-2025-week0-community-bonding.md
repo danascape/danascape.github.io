@@ -6,6 +6,7 @@ categories: [GSoC]
 tags: [Yocto, AGL, RaspberryPI, GSoC, LFX, LF]
 description: "The Journey begins: From proposal acceptance to preparation"
 author: danascape
+series: "GSoC 2025"
 toc: true
 ---
 

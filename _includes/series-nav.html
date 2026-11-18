@@ -1,37 +1,66 @@
 {%- comment -%}
   Series strip under the post title.
-  Posts join a series with `series: "Name"` in front matter; parts are ordered by date.
-  Optional `part_title:` sets the short label; otherwise it is taken from the title
-  (text after the last " - ", then after ": ").
+  Posts join a series with `series: "Name"` in front matter; parts are ordered by date
+  (or by `part:` when set). Optional `part_title:` sets the short label; otherwise it is
+  taken from the title (text after the last " - ", then after ": ").
+  Series with more than 6 parts get a compact strip: previous / next, plus a folded list.
 {%- endcomment -%}
 {%- if page.series -%}
   {%- assign _parts = site.posts | where: 'series', page.series | sort: 'date' -%}
   {%- if page.part -%}{%- assign _parts = _parts | sort: 'part' -%}{%- endif -%}
   {%- if _parts.size > 1 -%}
     {%- for p in _parts -%}{%- if p.url == page.url -%}{%- assign _part = forloop.index -%}{%- endif -%}{%- endfor -%}
-    <nav class="series-nav" aria-label="Series: {{ page.series | escape }}">
+    {%- assign _prev_i = _part | minus: 1 -%}
+    {%- assign _next_i = _part | plus: 1 -%}
+    {%- assign _items = '' -%}
+    {%- assign _prev = '' -%}
+    {%- assign _next = '' -%}
+
+    {%- for p in _parts -%}
+      {%- assign _short = p.part_title -%}
+      {%- unless _short -%}
+        {%- assign _short = p.title | split: ' - ' | last -%}
+        {%- if _short contains ': ' -%}{%- assign _short = _short | split: ': ' | last -%}{%- endif -%}
+        {%- assign _starts = _short | slice: 0, 5 -%}
+        {%- if _starts == 'Part ' -%}{%- assign _short = '' -%}{%- endif -%}
+      {%- endunless -%}
+
+      {%- capture _li -%}
+        <li>
+          {%- if p.url == page.url -%}
+            <span class="current" aria-current="page"><b>{{ forloop.index }}</b>{% if _short != '' %} {{ _short }}{% endif %}</span>
+          {%- else -%}
+            <a href="{{ p.url | relative_url }}"><b>{{ forloop.index }}</b>{% if _short != '' %} {{ _short }}{% endif %}</a>
+          {%- endif -%}
+        </li>
+      {%- endcapture -%}
+      {%- assign _items = _items | append: _li -%}
+
+      {%- if forloop.index == _prev_i -%}
+        {%- capture _prev -%}<a class="series-nav-prev" href="{{ p.url | relative_url }}" rel="prev"><i class="fas fa-arrow-left fa-sm"></i> {% if _short != '' %}{{ _short }}{% else %}Part {{ forloop.index }}{% endif %}</a>{%- endcapture -%}
+      {%- endif -%}
+      {%- if forloop.index == _next_i -%}
+        {%- capture _next -%}<a class="series-nav-nextlink" href="{{ p.url | relative_url }}" rel="next">{% if _short != '' %}{{ _short }}{% else %}Part {{ forloop.index }}{% endif %} <i class="fas fa-arrow-right fa-sm"></i></a>{%- endcapture -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    <nav class="series-nav{% if _parts.size > 6 %} series-nav-compact{% endif %}" aria-label="Series: {{ page.series | escape }}">
       <div class="series-nav-head">
         <span class="series-nav-name">{{ page.series }}</span>
         <span class="series-nav-count">Part {{ _part }} of {{ _parts.size }}</span>
       </div>
-      <ol>
-        {%- for p in _parts -%}
-          {%- assign _short = p.part_title -%}
-          {%- unless _short -%}
-            {%- assign _short = p.title | split: ' - ' | last -%}
-            {%- if _short contains ': ' -%}{%- assign _short = _short | split: ': ' | last -%}{%- endif -%}
-            {%- assign _starts = _short | slice: 0, 5 -%}
-            {%- if _starts == 'Part ' -%}{%- assign _short = '' -%}{%- endif -%}
-          {%- endunless -%}
-          <li>
-            {%- if p.url == page.url -%}
-              <span class="current" aria-current="page"><b>{{ forloop.index }}</b>{% if _short != '' %} {{ _short }}{% endif %}</span>
-            {%- else -%}
-              <a href="{{ p.url | relative_url }}"><b>{{ forloop.index }}</b>{% if _short != '' %} {{ _short }}{% endif %}</a>
-            {%- endif -%}
-          </li>
-        {%- endfor -%}
-      </ol>
+      {%- if _parts.size > 6 -%}
+        <div class="series-nav-step">
+          {%- if _prev != '' -%}{{ _prev }}{%- else -%}<span></span>{%- endif -%}
+          {{ _next }}
+        </div>
+        <details>
+          <summary>All {{ _parts.size }} parts</summary>
+          <ol>{{ _items }}</ol>
+        </details>
+      {%- else -%}
+        <ol>{{ _items }}</ol>
+      {%- endif -%}
     </nav>
   {%- endif -%}
 {%- endif -%}

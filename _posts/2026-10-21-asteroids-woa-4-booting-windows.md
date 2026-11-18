@@ -7,6 +7,13 @@ tags: [UEFI, Windows, Qualcomm, Mu-Silicium, ARM64, Reverse Engineering, ACPI]
 description: "Three minutes of a frozen logo, and a GUID I made up myself."
 author: danascape
 series: "Windows on the Nothing Phone (3a)"
+tldr:
+  - "Repartition the phone, build a Windows PE and boot it from the ESP"
+  - "Fix a memory-map crash, then find a silent hang with no debugger: firmware-call logs, diagnostics written to files, symbols and breakpoints"
+  - "The cause was a GUID. After that: an ACPI device so Windows sees the UFS storage, and a full install"
+prereqs:
+  - "[Part 3](/posts/asteroids-woa-3-going-green/): UEFI booting with storage and USB working"
+  - "A phone you can factory reset: repartitioning wipes Android data"
 toc: true
 ---
 

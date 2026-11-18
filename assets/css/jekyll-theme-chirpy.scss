@@ -235,3 +235,34 @@ article[data-toc] .content {
     transition: none;
   }
 }
+
+/* compact series strip (more than 6 parts) */
+.series-nav-compact {
+  .series-nav-step {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.4rem 1rem;
+
+    a {
+      border: 0;
+      padding: 0.1rem 0;
+      color: var(--link-color);
+    }
+  }
+
+  details {
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--main-border-color);
+    padding-top: 0.5rem;
+  }
+
+  summary {
+    cursor: pointer;
+    color: var(--text-muted-color);
+  }
+
+  details ol {
+    margin-top: 0.6rem;
+  }
+}

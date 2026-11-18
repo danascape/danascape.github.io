@@ -7,6 +7,13 @@ tags: [UEFI, Windows, Qualcomm, Mu-Silicium, ARM64, ACPI]
 description: "Before you boot Windows on a phone, you need to know what booting even is."
 author: danascape
 series: "Windows on the Nothing Phone (3a)"
+tldr:
+  - "What booting means on a PC and on a Qualcomm phone, and where UEFI and ACPI fit in"
+  - "Enough ARM64 to read a crash dump: exception levels, registers, ELR/ESR/FAR, and turning an address into a function name"
+  - "How UEFI, Mu-Silicium, ACPI and the Windows boot path (BCD, WinPE, WIM) work, before touching a single file"
+prereqs:
+  - "Comfortable in a Linux shell and able to read C; Python helps"
+  - "Nothing else yet: this part is theory. The full hardware and software list is at the end"
 toc: true
 ---
 

@@ -6,6 +6,12 @@ categories: [AOSP]
 tags: [Android, AOSP, Launcher3, Reverse Engineering, Frameworks]
 description: "The panel to the left of your home screen is another app's window"
 author: danascape
+tldr:
+  - "The -1 screen is not drawn by the launcher: it is another app's window, and the launcher only forwards your swipe"
+  - "What is inside `libGoogleFeed.jar` and the overlay protocol it speaks"
+  - "Building a replacement provider, and two bugs that cost a day each: AIDL method order, and an upstream change that did not conflict"
+prereqs:
+  - "[Launcher3: Architecture and Internals](/posts/Launcher3-Architecture-and-Internals/)"
 toc: true
 ---
 

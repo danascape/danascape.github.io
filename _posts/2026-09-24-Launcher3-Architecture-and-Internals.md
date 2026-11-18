@@ -6,6 +6,10 @@ categories: [AOSP]
 tags: [Android, AOSP, Launcher3, Frameworks, SystemUI]
 description: "The app you touch a hundred times a day and almost never read"
 author: danascape
+tldr:
+  - "Launcher3 is six surfaces in one process: workspace, All Apps, widgets, Overview, taskbar and the -1 screen"
+  - "How the source is split, what happens when you unlock, and how the workspace grid works"
+  - "What bites when you carry patches across releases (`DeviceProfile`, state transitions, upstream changes that do not conflict), and an order for reading the source"
 toc: true
 ---
 
