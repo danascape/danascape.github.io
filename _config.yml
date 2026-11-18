@@ -19,7 +19,7 @@ title: squadri # the main title
 tagline: Kernels and AOSP. # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  Notes on AOSP, the Linux kernel and Android device bring-up: boot chains, device trees, mainlining, Windows on ARM and the Android framework.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.

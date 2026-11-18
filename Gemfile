@@ -3,6 +3,7 @@
 source "https://rubygems.org"
 
 gem "jekyll-theme-chirpy", "~> 7.2", ">= 7.2.4"
+gem "logger" # silences the Ruby 3.4+ default-gem warning from Jekyll
 
 gem "html-proofer", "~> 5.0", group: :test
 

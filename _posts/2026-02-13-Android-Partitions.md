@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Android Partioning"
+title: "Android Partitioning"
 date: 2026-02-13 00:00:00 +0530
 categories: [AOSP]
 tags: [Android, AOSP, Frameworks, Vendor]

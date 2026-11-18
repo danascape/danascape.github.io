@@ -5,7 +5,7 @@ order: 4
 ---
 
 ```yaml
-name: Mohammad Saalim
+name: Saalim Quadri
 title: Android Platform & Systems
 background: 
   - AOSP Engineer
@@ -18,7 +18,7 @@ focus:
 ```
 
 ## About
-Hey, I’m Mohammad Saalim.
+Hey, I’m Saalim Quadri.
 
 I mostly work around AOSP and the parts of Android that sit close to hardware. My day-to-day work usually lives somewhere between the Linux kernel, device bring-up, HALs, and framework/system services, typically the “why is the device not booting / not working / not fast enough” side of Android.
 
