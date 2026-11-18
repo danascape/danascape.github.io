@@ -306,6 +306,7 @@ I worked these out by comparing a device that already had both a DT memory map a
 
 Instead of converting a hundred lines by hand, I wrote a script:
 
+{% raw %}
 ```python
 # memmap.py: convert Qualcomm's qcom,uefimem DT node to MemoryMapLib entries
 import sys, fdt
@@ -335,6 +336,7 @@ for n in node.nodes:
         RA[val(n,'ResourceAttribute')], MT[val(n,'MemoryType')],
         CA[val(n,'CacheAttributes')]))
 ```
+{% endraw %}
 
 ```bash
 ~/woa/venv/bin/python memmap.py ~/woa/xblcfg/fdt_1_39e4c.dtb
